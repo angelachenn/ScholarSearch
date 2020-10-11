@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
+  <link href="browse.css" rel="stylesheet">
+  <link href="index.html">
+  <link href="aboutus.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ScholarSearch</title>
+</head>
+<body>
+  <div id="app"> 
+    <nav>
+        <vs-navbar
+          v-model="active"
+          fixed
+          color="#add8e6"
+          text-white
+          square
+          center-collapsed
+        >
+          <template #left>
+            <p id="header-logo">
+              ScholarSearch
+            </p>
+          </template>
+          <div id="titles">
+            <vs-navbar-item class="navtext" :active="active == 'Home'" onclick="document.location='./'">
+              Home
+            </vs-navbar-item>
+            <vs-navbar-item class="navtext" :active="active == 'About Us'" onclick="document.location='./aboutus.html'">
+              About Us
+            </vs-navbar-item>
+            <vs-navbar-item class="navtext" :active="active == 'For You'">
+              For You
+            </vs-navbar-item>
+          </div>
+          <template #right>
+            <vs-avatar id="avatar" color="#5e548e" size="60">
+              <template #text>
+                John Doe
+              </template>
+            </vs-avatar>
+          </template>
+        </vs-navbar>
+      </nav>
+      <main>
+        <h1>
+          For You Page
+        </h1>
+        <h2>
+          Scholarships personalized for you
+        </h2>
+        <div id="searching">
+          <vs-input
+            v-model="value1"
+            class="search"
+            shadow
+            placeholder="Search for Scholarships"
+            type="text"
+          >
+          </vs-input>
+          <button id="search-button"></button>
+        </div>
+        <div id="grid-section">
+          <div id="Sort">
+            <vs-select
+              v-model="value2"
+              class="Sort-By"
+              shadow
+              placeholder="Sort By"
+            >
+              <vs-option label="Closest Deadline" value="1">
+                Closest Deadline
+              </vs-option>
+              <vs-option label="Furthest Deadline" value="2">
+                Furthest Deadline
+              </vs-option>
+              <vs-option label="Highest Value" value="3">
+                Highest Value
+              </vs-option>
+              <vs-option label="Lowest Value" value="4">
+                Lowest Value
+              </vs-option>
+              <vs-option label="Highest Popularity" value="5">
+                Highest Popularity
+              </vs-option>
+              <vs-option label="Lowest Popularity" value="6">
+                Lowest Popularity
+              </vs-option>
+              <vs-option label="Alphabetical" value="7">
+                Alphabetical
+              </vs-option>
+              <vs-option label="Highest Availability" value="8">
+                Highest Availability
+              </vs-option>
+              <vs-option label="Lowest Availability" value="9">
+                Lowest Availability
+              </vs-option>
+            </vs-select>
+          </div>
+          <div id="Filter">
+            <vs-select
+              v-model="value3"
+              filter
+              multiple
+              placeholder="University"
+              class="University"
+            >
+              <vs-option label="Algoma University" value="1">
+                Algoma University
+              </vs-option>
+              <vs-option label="Brock University" value="2">
+                Brock University
+              </vs-option>
+              <vs-option label="Carleton University" value="3">
+                Carleton University
+              </vs-option>
+              <vs-option label="University of Guelph" value="4">
+                University of Guelph
+              </vs-option>
+              <vs-option label="University of Guelph-Humber" value="5">
+                University of Guelph-Humber
+              </vs-option>
+              <vs-option label="Université de Hearst" value="6">
+                Université de Hearst
+              </vs-option>
+              <vs-option label="Lakehead University" value="7">
+                Lakehead University
+              </vs-option>
+              <vs-option label="Laurentian University" value="8">
+                Laurentian University
+              </vs-option>
+              <vs-option label="McMaster University" value="9">
+                McMaster University
+              </vs-option>
+              <vs-option label="Nipissing University" value="10">
+                Nipissing University
+              </vs-option>
+              <vs-option label="OCAD University" value="11">
+                OCAD University
+              </vs-option>
+              <vs-option label="Université de l'Ontario" value="12">
+                Université de l'Ontario
+              </vs-option>
+              <vs-option label="Ontario Tech University" value="13">
+                Ontario Tech University
+              </vs-option>
+              <vs-option label="University of Ottawa" value="14">
+                University of Ottawa
+              </vs-option>
+              <vs-option label="Saint Paul University" value="15">
+                Saint Paul University
+              </vs-option>
+              <vs-option label="Queen's University" value="16">
+                Queen's University
+              </vs-option>
+              <vs-option label="Royal Military College of Canada" value="17">
+                Royal Military College of Canada
+              </vs-option>
+              <vs-option label="Ryerson University" value="18">
+                Ryerson University
+              </vs-option>
+              <vs-option label="Toronto University" value="19">
+                Toronto University
+              </vs-option>
+              <vs-option label="Trent University" value="20">
+                Trent University
+              </vs-option>
+              <vs-option label="Waterloo University" value="21">
+                Waterloo University
+              </vs-option>
+              <vs-option label="Conrad Gebrel University" value="22">
+                Conrad Gebrel University
+              </vs-option>
+              <vs-option label="Renison University" value="23">
+                Renison University
+              </vs-option>
+              <vs-option label="St Jerome's University" value="24">
+                St Jerome's University
+              </vs-option>
+              <vs-option label="St Paul's University" value="25">
+                St Paul's University
+              </vs-option>
+              <vs-option label="Western University" value="26">
+                Western University
+              </vs-option>
+              <vs-option label="Huron University" value="27">
+                Huron University
+              </vs-option>
+              <vs-option label="King's University" value="28">
+                King's University
+              </vs-option>
+              <vs-option label="Wilfred Laurier University" value="29">
+                Wilfred Laurier University
+              </vs-option>
+              <vs-option label="University of Windsor" value="30">
+                University of Windsor
+              </vs-option>
+              <vs-option label="York University" value="31">
+                York University
+              </vs-option>
+            </vs-select>
+            <vs-select
+              v-model="value7"
+              class="Discipline"
+              filter
+              multiple
+              placeholder="Discipline"
+            >
+              <vs-option label="Animal, Plants, and Food Studies" value="1">
+                Animal, Plants, and Food Studies
+              </vs-option>
+              <vs-option label="Architecture" value="2">
+                Architecture
+              </vs-option>
+              <vs-option label="Arts and Design" value="3">
+                Arts and Design
+              </vs-option>
+              <vs-option label="Biology" value="4">
+                Biology
+              </vs-option>
+              <vs-option label="Business" value="5">
+                Business
+              </vs-option>
+              <vs-option label="Computer Science" value="6">
+                Computer Science
+              </vs-option>
+              <vs-option label="Cultures and Languages" value="7">
+                Cultures and Languages
+              </vs-option>
+              <vs-option label="Education" value="8">
+                Education
+              </vs-option>
+              <vs-option label="Engineering" value="9">
+                Engineering
+              </vs-option>
+              <vs-option label="Historical, Philosophical, and Religious Studies" value="10">
+                Historical, Philosophical, and Religious Studies
+              </vs-option>
+              <vs-option label="Mass Communications" value="11">
+                Mass Communications
+              </vs-option>
+              <vs-option label="Mathematics" value="12">
+                Mathematics
+              </vs-option>
+              <vs-option label="Medicine" value="13">
+                Medicine
+              </vs-option>
+              <vs-option label="Physical Sciences" value="14">
+                Physical Sciences
+              </vs-option>
+              <vs-option label="Social Sciences" value="15">
+                Social Sciences
+              </vs-option>
+              <vs-option label="Technology" value="16">
+                Technology
+              </vs-option>
+            </vs-select>
+            <vs-select
+              v-model="value6"
+              class="Renewable"
+              multiple
+              filter
+              placeholder="Renewable"
+            >
+              <vs-option label="Yes" value="1">
+                Yes
+              </vs-option>
+              <vs-option label="Yes" value="2">
+                No
+              </vs-option>
+            </vs-select>
+            <vs-select
+              v-model="value5"
+              class="Level"
+              multiple
+              filter
+              placeholder="Level of Education"
+            >
+              <vs-option label="Bachelor's" value="1">
+                Bachelor's
+              </vs-option>
+              <vs-option label="Master's" value="2">
+                Master's
+              </vs-option>
+              <vs-option label="Doctorate" value="3">
+                Doctorate
+              </vs-option>
+            </vs-select>
+            <vs-select
+              v-model="value4"
+              class="Application"
+              multiple
+              filter
+              placeholder="Application Required"
+            >
+              <vs-option label="Yes" value="1">
+                Yes
+              </vs-option>
+              <vs-option label="No" value="2">
+                No
+              </vs-option>
+            </vs-select>
+          </div>
+          <div id="scholarships">
+            <div id="scholarship-card">
+              <h3>
+                Algoma University Alumni Award I
+              </h3>
+              <h4>
+                June 30, 2021
+              </h4>
+              <h5>
+                Renewable: No
+              </h5>
+              <h5 id="university-name">
+                Algoma University
+              </h5>
+              <h5 id="discipline-name">
+                All
+              </h5>
+              <h5 id="amount">
+                $2000
+              </h5>
+              <h6 id="right-top">
+                Quantity: 1<br>Level: Undergraduate
+              </h6>
+              <h6 id="left">
+                Application Required: Yes
+              </h6>
+              <p>
+                A scholarship of up to $2,000 is given to the child of an Algoma University alumna or alumnus with the highest average on the 6 best U/M courses presented for admission. The candidate must enroll in and maintain 30 credits over 2 consecutive terms (fall/winter) of study at Algoma U. This award is non-renewable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+      <vs-switch
+        v-model="active5"
+        class="switch"
+        color="#add8e6"
+      >
+        <template #off>
+          <i class="bx-bxs-moon"></i>
+        </template>
+        <template #on>
+          <i class="bx-bxs-sun"></i>
+        </template>
+      </vs-switch>
+      <footer>
+        <img id="Footer-Logo" src="/assets/darkmodelogo.png" alt="ScholarSearch Logo">
+        <button id="footer-home" class="footer-text" onclick="document.location='./'">
+          Home
+        </button>
+        <button id="footer-about" class="footer-text">
+          About Us
+        </button>
+        <button id="footer-for" class="footer-text">
+          For You
+        </button>
+        <button id="footer-profile" class="footer-text">
+          Profile
+        </button>
+        <button id="footer-bookmark" class="footer-text">
+          Bookmarks
+        </button>
+      </footer>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
+  <script src="browse.js"></script>
+</body>
+</html>

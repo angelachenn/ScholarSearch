@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
+  <link href="aboutus.css" rel="stylesheet">
+  <link href="index.html">
+  <link href="login.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title>ScholarSearch</title>
+</head>
+<body>
+  <div id="app"> 
+    <nav>
+        <button id="Name">
+          ScholarSearch
+        </button>
+        <vs-button id="Home" color="#7275a5" onclick="document.location='./index.html'">
+          Home
+        </vs-button>
+        <vs-button id="Login-Register" color="#7275a5" onclick="document.location='./login.html'">
+          Login/Register
+        </vs-button>
+      </nav>
+      <h1>
+        About Us
+      </h1>
+      <main>
+        <h2>
+          Who We Are
+        </h2>
+        <p>
+          Lorem ipsum dolor sit amet, reque virtute consequat ad mea. Mazim sonet mel ex. Aliquam saperet legendos et mei, cu has quas albucius. Has ut lucilius dissentiet, vide accumsan repudiare has at. Ea sed elitr tractatos salutandi, sed alienum posidonium cu, ei usu assum homero officiis.
+          <br>
+          <br>
+          Lorem ipsum dolor sit amet, reque virtute consequat ad mea. Mazim sonet mel ex. Aliquam saperet legendos et mei, cu has quas albucius. Has ut lucilius dissentiet, vide accumsan repudiare has at. Ea sed elitr tractatos salutandi, sed alienum posidonium cu, ei usu assum homero officiis.
+        </p>
+        <h2>
+          Our Goals
+        </h2>
+        <p>
+          Lorem ipsum dolor sit amet, reque virtute consequat ad mea. Mazim sonet mel ex. Aliquam saperet legendos et mei, cu has quas albucius. Has ut lucilius dissentiet, vide accumsan repudiare has at. Ea sed elitr tractatos salutandi, sed alienum posidonium cu, ei usu assum homero officiis.
+          <br>
+          <br>
+          Lorem ipsum dolor sit amet, reque virtute consequat ad mea. Mazim sonet mel ex. Aliquam saperet legendos et mei, cu has quas albucius. Has ut lucilius dissentiet, vide accumsan repudiare has at. Ea sed elitr tractatos salutandi, sed alienum posidonium cu, ei usu assum homero officiis.
+        </p>
+        <h2>
+          Frequently Asked Questions
+        </h2>
+        <p>
+          Lorem ipsum dolor sit amet, reque virtute consequat ad mea. Mazim sonet mel ex. Aliquam saperet legendos et mei, cu has quas albucius. Has ut lucilius dissentiet, vide accumsan repudiare has at. Ea sed elitr tractatos salutandi, sed alienum posidonium cu, ei usu assum homero officiis.
+          <br>
+          <br>
+          Lorem ipsum dolor sit amet, reque virtute consequat ad mea. Mazim sonet mel ex. Aliquam saperet legendos et mei, cu has quas albucius. Has ut lucilius dissentiet, vide accumsan repudiare has at. Ea sed elitr tractatos salutandi, sed alienum posidonium cu, ei usu assum homero officiis.
+        </p>
+      </main>
+      <vs-switch
+        v-model="active5"
+        class="switch"
+        color="#add8e6"
+      >
+        <template #off>
+          <i class="bx-bxs-moon"></i>
+        </template>
+        <template #on>
+          <i class="bx-bxs-sun"></i>
+        </template>
+      </vs-switch>
+      <footer>
+        <img id="Footer-Logo" src="/assets/darkmodelogo.png" alt="ScholarSearch Logo">
+        <vs-button id="Home-Footer" color="#7275a5" onclick="document.location='./'">
+          Home
+        </vs-button>
+        <vs-button id="Login-Register-Footer" color="#7275a5" onclick="document.location='./login'">
+          Login/Register
+        </vs-button>
+      </footer>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
+  <script src="aboutus.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
+  <link href="login.css" rel="stylesheet">
+  <link href="index.html">
+  <link href="browse.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ScholarSearch</title>
+</head>
+<body>
+  <div id="app"> 
+    <div id="left-side">
+      <vs-button id="Home" color="#7275a5" onclick="document.location='./'">
+        Back Home
+      </vs-button>
+      <h1 id="Login-Title">
+        Login
+      </h1>
+      <hr id="left-line">
+      <h2 class="left">
+        Email
+      </h2>
+      <vs-input
+        id="email"
+        v-model="value"
+        class="input"
+        shadow
+        placeholder="john.doe@gmail.com"
+        type="text"
+      >
+      </vs-input>
+      <h2 class="left">
+        Password
+      </h2>
+      <vs-input
+        color="#add8e6"
+        id="password"
+        v-model="value2"
+        class="input"
+        shadow
+        placeholder="Password123"
+        type="password"
+      >
+      </vs-input>
+      <h1 id="message">
+        Great to see you again!
+      </h1>
+      <vs-button id="Login-Button" onclick="document.location='./browse.html'">
+        Start Searching
+      </vs-button>
+      <vs-switch
+        v-model="active5"
+        class="switch"
+        color="#add8e6"
+      >
+        <template #off>
+          <i class="bx-bxs-moon"> </i>
+        </template>
+        <template #on>
+          <i class="bx-bxs-sun"> </i>
+        </template>
+      </vs-switch>
+    </div>
+    <div id="right-side">
+      <div id="Scholar-Search-Logo">
+        <img src="/assets/scholarsearch.png" alt="Scholar Search Logo">
+      </div>
+      <h1 id="Register-Title">
+        Register
+      </h1>
+      <hr id="right-line">
+      <h2 class="right">
+        Name:<span style="color:#7275a5">*</span>
+      </h2>
+      <vs-input
+        v-model="value3"
+        class="input right-side"
+        shadow
+        placeholder="John Doe"
+        type="text"
+      >
+    </vs-input>
+      <h2 class="right">
+        Email:<span style="color:#7275a5">*</span>
+      </h2>
+      <vs-input
+        v-model="value4"
+        class="input right-side"
+        shadow
+        placeholder="john.doe@gmail.com"
+        type="text"
+      >
+      </vs-input>
+      <h2 class="right">
+        Password:<span style="color:#7275a5">*</span>
+      </h2>
+      <vs-input
+        v-model="value5"
+        class="input right-side"
+        shadow
+        placeholder="Password123"
+        type="password"
+      >
+    </vs-input>
+      <h2 class="right">
+        Desired University:
+      </h2>
+      <vs-select
+        v-model="value6"
+        class="input right-side"
+        filter
+        placeholder="ABC University"
+      >
+        <vs-option label="Algoma University" value="1">
+          Algoma University
+        </vs-option>
+        <vs-option label="Brock University" value="2">
+          Brock University
+        </vs-option>
+          <vs-option label="Carleton University" value="3">
+            Carleton University
+          </vs-option>
+          <vs-option label="University of Guelph" value="4">
+            University of Guelph
+          </vs-option>
+          <vs-option label="University of Guelph-Humber" value="5">
+            University of Guelph-Humber
+          </vs-option>
+          <vs-option label="Université de Hearst" value="6">
+            Université de Hearst
+          </vs-option>
+          <vs-option label="Lakehead University" value="7">
+            Lakehead University
+          </vs-option>
+          <vs-option label="Laurentian University" value="8">
+            Laurentian University
+          </vs-option>
+          <vs-option label="McMaster University" value="9">
+            McMaster University
+          </vs-option>
+          <vs-option label="Nipissing University" value="10">
+            Nipissing University
+          </vs-option>
+          <vs-option label="OCAD University" value="11">
+            OCAD University
+          </vs-option>
+          <vs-option label="Université de l'Ontario" value="12">
+            Université de l'Ontario
+          </vs-option>
+          <vs-option label="Ontario Tech University" value="13">
+            Ontario Tech University
+          </vs-option>
+          <vs-option label="University of Ottawa" value="14">
+            University of Ottawa
+          </vs-option>
+          <vs-option label="Saint Paul University" value="15">
+            Saint Paul University
+          </vs-option>
+          <vs-option label="Queen's University" value="16">
+            Queen's University
+          </vs-option>
+          <vs-option label="Royal Military College of Canada" value="17">
+            Royal Military College of Canada
+          </vs-option>
+          <vs-option label="Ryerson University" value="18">
+            Ryerson University
+          </vs-option>
+          <vs-option label="Toronto University" value="19">
+            Toronto University
+          </vs-option>
+          <vs-option label="Trent University" value="20">
+            Trent University
+          </vs-option>
+          <vs-option label="Waterloo University" value="21">
+            Waterloo University
+          </vs-option>
+          <vs-option label="Conrad Gebrel University" value="22">
+            Conrad Gebrel University
+          </vs-option>
+          <vs-option label="Renison University" value="23">
+            Renison University
+          </vs-option>
+          <vs-option label="St Jerome's University" value="24">
+            St Jerome's University
+          </vs-option>
+          <vs-option label="St Paul's University" value="25">
+            St Paul's University
+          </vs-option>
+          <vs-option label="Western University" value="26">
+            Western University
+          </vs-option>
+          <vs-option label="Huron University" value="27">
+            Huron University
+          </vs-option>
+          <vs-option label="King's University" value="28">
+            King's University
+          </vs-option>
+          <vs-option label="Wilfred Laurier University" value="29">
+            Wilfred Laurier University
+          </vs-option>
+          <vs-option label="University of Windsor" value="30">
+            University of Windsor
+          </vs-option>
+          <vs-option label="York University" value="31">
+            York University
+          </vs-option>
+        </vs-select>
+        <h2 class="right text">
+          Discipline:
+        </h2>
+        <vs-select
+          v-model="value7"
+          class="input right-side"
+          filter
+          placeholder="All"
+        >
+          <vs-option label="Animal, Plants, and Food Studies" value="1">
+            Animal, Plants, and Food Studies
+          </vs-option>
+          <vs-option label="Architecture" value="2">
+            Architecture
+          </vs-option>
+          <vs-option label="Arts and Design" value="3">
+            Arts and Design
+          </vs-option>
+          <vs-option label="Biology" value="4">
+            Biology
+          </vs-option>
+          <vs-option label="Business" value="5">
+            Business
+          </vs-option>
+          <vs-option label="Computer Science" value="6">
+            Computer Science
+          </vs-option>
+          <vs-option label="Cultures and Languages" value="7">
+            Cultures and Languages
+          </vs-option>
+          <vs-option label="Education" value="8">
+            Education
+          </vs-option>
+          <vs-option label="Engineering" value="9">
+            Engineering
+          </vs-option>
+          <vs-option label="Historical, Philosophical, and Religious Studies" value="10">
+            Historical, Philosophical, and Religious Studies
+          </vs-option>
+          <vs-option label="Mass Communications" value="11">
+            Mass Communications
+          </vs-option>
+          <vs-option label="Mathematics" value="12">
+            Mathematics
+          </vs-option>
+          <vs-option label="Medicine" value="13">
+            Medicine
+          </vs-option>
+          <vs-option label="Physical Sciences" value="14">
+            Physical Sciences
+          </vs-option>
+          <vs-option label="Social Sciences" value="15">
+            Social Sciences
+          </vs-option>
+          <vs-option label="Technology" value="16">
+            Technology
+          </vs-option>
+        </vs-select>
+        <p>
+          Mandatory fields are marked with a <span style="color:#7275a5">*</span>. Optional fields will <br> allow us to recommend relevant scholarships to you.
+        </p>
+        <vs-button id="Create-Account" color="#7275a5" onclick="document.location='./browse.html'">
+          Create Account
+        </vs-button>
+      </div>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

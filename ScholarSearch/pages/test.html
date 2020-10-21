@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <div id="app">
+      <h1> {{title}} </h1>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        name: "home",
+        data() {
+          return {
+            title: ""
+          };
+        },
+        mounted() {
+          fetch("http://localhost:8080")
+          .then(response => {
+            return response.text();
+          })
+          .then(data => {
+            this.title = data;
+          });
+        }
+      });
+    </script>
+  </body>
+  </html>

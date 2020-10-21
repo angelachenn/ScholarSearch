@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
+  <link href="bookmarks.css" rel="stylesheet">
+  <link href="index.html">
+  <link href="aboutus.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ScholarSearch</title>
+</head>
+<body>
+  <div id="app"> 
+    <nav>
+        <vs-navbar
+          id="navbar"
+          v-model="active"
+          fixed
+          color="#add8e6"
+          text-white
+          square
+          center-collapsed
+        >
+          <template #left>
+            <p id="header-logo">
+              ScholarSearch
+            </p>
+          </template>
+          <div id="titles">
+            <vs-navbar-item class="navtext" :active="active == 'Home'" onclick="document.location='./'">
+              Home
+            </vs-navbar-item>
+            <vs-navbar-item class="navtext" :active="active == 'About Us'" onclick="document.location='./aboutus.html'">
+              About Us
+            </vs-navbar-item>
+            <vs-navbar-item class="navtext" :active="active == 'Browse'" onclick="document.location='./browse.html'">
+              Browse
+            </vs-navbar-item>
+            <vs-navbar-item class="navtext" :active="active == 'For You'" onclick="document.location='./foryou.html'">
+              For You
+              </vs-navbar-item>
+          </div>
+          <template #right>
+            <vs-avatar id="avatar" color="#5e548e" size="60">
+              <template #text>
+                John Doe
+              </template>
+            </vs-avatar>
+          </template>
+        </vs-navbar>
+      </nav>
+      <main>
+        <h1>
+          My Bookmarks
+        </h1>
+        <div class="scholarships">
+          <div class="scholarship-left">
+        <h3 id="name">
+          Algoma University Alumni Award I
+        </h3>
+        <div id="buttons">
+        <h5 id="university-name">
+          Algoma University
+        </h5>
+        <h5 id="discipline-name">
+          All
+        </h5>
+        <h5 id="amount">
+          $2000
+        </h5>
+      </div>
+        <h4 id="deadline">
+          June 30, 2021
+        </h4>
+        <div>
+        <h4 id="renewable">
+          Renewable: No
+        </h4>
+        <h4 id="supplemental">
+          Application Required: Yes
+        </h4>
+      </div>
+      <div>
+        <h5 id="level">
+          Level: Undergraduate
+        </h5>
+        <h5 id="quantity">
+          Quantity: 100
+        </h5>
+      </div>
+        <p>
+          peepeppefjwpigvegbuorffniw woefoungveoruguoboiq 
+        </p>
+          </div>
+          <div class="scholarship-right">
+            <h3>
+              truu
+            </h3>
+        </div>
+        </div>
+    </main>
+      <vs-switch
+        v-model="active5"
+        class="switch"
+        color="#add8e6"
+      >
+        <template #off>
+          <i class="bx-bxs-moon"></i>
+        </template>
+        <template #on>
+          <i class="bx-bxs-sun"></i>
+        </template>
+      </vs-switch>
+      <footer>
+        <img id="Footer-Logo" src="/assets/darkmodelogo.png" alt="ScholarSearch Logo">
+        <button id="footer-home" class="footer-text" onclick="document.location='./'">
+          Home
+        </button>
+        <button id="footer-about" class="footer-text" onclick="document.location='./aboutus.html'">
+          About Us
+        </button>
+        <button id="footer-for" class="footer-text" onclick="document.location='./browse.html'">
+          Browse
+        </button>
+        <button id="footer-profile" class="footer-text" onclick="document.location='./foryou.html'">
+          For You
+        </button>
+        <button id="footer-bookmark" class="footer-text" onclick="document.location='./bookmarks.html'">
+          Bookmarks
+        </button>
+      </footer>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
+  <script src="bookmarks.js"></script>
+</body>
+</html>

@@ -2,12 +2,19 @@
 <html>
 <head>
   <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
-  <link href="browse.css" rel="stylesheet">
+  <link href="profile.css" rel="stylesheet">
   <link href="index.html">
   <link href="aboutus.html">
-  <link rel="shortcut icon" href="#">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>ScholarSearch</title>
+  <style>
+    body {
+      background-image: url('/assets/profilebg.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed; 
+      background-size: 100% 100%;
+    }
+    </style>
 </head>
 <body>
   <div id="app"> 
@@ -33,9 +40,12 @@
             <vs-navbar-item class="navtext" :active="active == 'About Us'" onclick="document.location='./aboutus.html'">
               About Us
             </vs-navbar-item>
+            <vs-navbar-item class="navtext" :active="active == 'Browse'" onclick="document.location='./browse.html'">
+              Browse
+            </vs-navbar-item>
             <vs-navbar-item class="navtext" :active="active == 'For You'" onclick="document.location='./foryou.html'">
               For You
-            </vs-navbar-item>
+              </vs-navbar-item>
           </div>
           <template #right>
             <vs-avatar id="avatar" color="#5e548e" size="60">
@@ -48,66 +58,57 @@
       </nav>
       <main>
         <h1>
-          Browse
+          Hello, John Doe!
         </h1>
         <h2>
-          Your one stop shop for <b>all</b> Ontario Universities
+          Your Profile
         </h2>
-        <div id="searching">
-          <vs-input
-            v-model="value"
-            class="search"
-            shadow
-            placeholder="Search for Scholarships"
-            type="text"
-          >
-          </vs-input>
-          <button id="search-button"></button>
-        </div>
-        <div id="grid-section">
-          <div id="Sort">
-            <vs-select
-              v-model="value2"
-              class="Sort-By"
-              shadow
-              placeholder="Sort By"
-            >
-              <vs-option label="Closest Deadline" value="1">
-                Closest Deadline
-              </vs-option>
-              <vs-option label="Furthest Deadline" value="2">
-                Furthest Deadline
-              </vs-option>
-              <vs-option label="Highest Value" value="3">
-                Highest Value
-              </vs-option>
-              <vs-option label="Lowest Value" value="4">
-                Lowest Value
-              </vs-option>
-              <vs-option label="Highest Popularity" value="5">
-                Highest Popularity
-              </vs-option>
-              <vs-option label="Lowest Popularity" value="6">
-                Lowest Popularity
-              </vs-option>
-              <vs-option label="Alphabetical" value="7">
-                Alphabetical
-              </vs-option>
-              <vs-option label="Highest Availability" value="8">
-                Highest Availability
-              </vs-option>
-              <vs-option label="Lowest Availability" value="9">
-                Lowest Availability
-              </vs-option>
-            </vs-select>
-          </div>
-          <div id="Filter">
+        <div class="scholarships">
+          <div class="scholarship-card">
+        <h3 id="name">
+          Name:
+        </h3>
+        <vs-input
+          id="email"
+          v-model="value"
+          class="input"
+          shadow
+          placeholder="John Doe"
+          type="text"
+        >
+        </vs-input>
+        <h3>
+          Email:
+        </h3>
+        <vs-input
+          color="#add8e6"
+          id="email"
+          class="input"
+          shadow
+          disabled
+          placeholder="john.doe@gmail.com"
+          type="password"
+        >
+        </vs-input>
+        <h3>
+          Password:
+        </h3>
+        <vs-input
+          id="password"
+          class="input"
+          shadow
+          disabled
+          placeholder="Password123"
+          type="text"
+        >
+        </vs-input>
+        <h3>
+          Preferred University:
+        </h3>
             <vs-select
               v-model="value3"
-              filter
-              multiple
               placeholder="University"
-              class="University"
+              class="dropdown"
             >
               <vs-option label="Algoma University" value="1">
                 Algoma University
@@ -203,11 +204,12 @@
                 York University
               </vs-option>
             </vs-select>
+            <h3>
+              Discipline:
+            </h3>
             <vs-select
-              v-model="value4"
-              class="Discipline"
-              filter
-              multiple
+              v-model="value7"
+              class="dropdown"
               placeholder="Discipline"
             >
               <vs-option label="Animal, Plants, and Food Studies" value="1">
@@ -259,93 +261,28 @@
                 Technology
               </vs-option>
             </vs-select>
-            <vs-select
-              v-model="value5"
-              class="Renewable"
-              multiple
-              filter
-              placeholder="Renewable"
-            >
-              <vs-option label="Yes" value="1">
-                Yes
-              </vs-option>
-              <vs-option label="Yes" value="2">
-                No
-              </vs-option>
-            </vs-select>
-            <vs-select
-              v-model="value6"
-              class="Level"
-              multiple
-              filter
-              placeholder="Level of Education"
-            >
-              <vs-option label="Bachelor's" value="1">
-                Bachelor's
-              </vs-option>
-              <vs-option label="Master's" value="2">
-                Master's
-              </vs-option>
-              <vs-option label="Doctorate" value="3">
-                Doctorate
-              </vs-option>
-            </vs-select>
-            <vs-select
-              v-model="value4"
-              class="Application"
-              multiple
-              filter
-              placeholder="Application Required"
-            >
-              <vs-option label="Yes" value="1">
-                Yes
-              </vs-option>
-              <vs-option label="No" value="2">
-                No
-              </vs-option>
-            </vs-select>
-          </div>
-          <div id="scholarship-list">
-            <div id="scholarship-card" v-for="scholarship in scholarships" v-bind:key="scholarship.id">
-              <h3>
-                {{ scholarship.name }}
-              </h3>
-              <h4>
-                {{scholarship.date}}
-              </h4>
-              <h5>
-                Renewable: {{scholarship.renewable}}
-              </h5>
-              <h5 id="university-name">
-                {{scholarship.university}}
-              </h5>
-              <h5 id="discipline-name">
-                {{scholarship.discipline}}
-              </h5>
-              <h5 id="amount">
-                ${{scholarship.value}}
-              </h5>
-              <h6 id="right-top">
-                Quantity: {{scholarship.numSpots}}<br>Level: {{scholarship.level}}
-              </h6>
-              <h6 id="left">
-                Application Required: {{scholarship.supplemental}}
-              </h6>
-              <p>
-                {{scholarship.description}}
-              </p>
-              <div id="bookmarking">
-                <button id="bookmark-button" @click="buttonClicked(scholarship.id)">
-                  <i class=bookmark-icon>
-                  </i>
-                </button>
-                <button id="bookmark-counter">
-                  {{scholarship.numBookmarks}}
-                </button>
-              </div>
-            </div>
+            <vs-button id="savechanges" color="#7275a5">
+              Save Changes
+            </vs-button>
           </div>
         </div>
+        <div id="outer">
+          <div class="inner">
+            <div id="bookmarking">
+            <vs-button id="bookmarks" color="#7275a5" onclick="document.location='./bookmarks.html'">
+            View My Bookmarks
+            </vs-button>
+            <button id="bookmark-counter">
+              2
+            </button>
+            </div>
+          </div>
+          <div class="inner">
+            <vs-button id="logout" color="#7275a5" onclick="document.location='./'">
+              Logout
+            </vs-button>
+          </div>
+      </div>
       </main>
       <vs-switch
         v-model="active5"
@@ -367,11 +304,11 @@
         <button id="footer-about" class="footer-text" onclick="document.location='./aboutus.html'">
           About Us
         </button>
-        <button id="footer-for" class="footer-text" onclick="document.location='./foryou.html'">
-          For You
+        <button id="footer-for" class="footer-text" onclick="document.location='./browse.html'">
+          Browse
         </button>
-        <button id="footer-profile" class="footer-text" onclick="document.location='./profile.html'">
-          Profile
+        <button id="footer-profile" class="footer-text" onclick="document.location='./foryou.html'">
+          For You
         </button>
         <button id="footer-bookmark" class="footer-text" onclick="document.location='./bookmarks.html'">
           Bookmarks
@@ -381,7 +318,6 @@
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="browse.js"></script>
+  <script src="profile.js"></script>
 </body>
 </html>

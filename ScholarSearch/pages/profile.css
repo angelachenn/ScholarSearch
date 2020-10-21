@@ -1,0 +1,215 @@
+@font-face {
+    font-family: kollektifbold;
+    src: url(/assets/Kollektif.ttf);
+  }
+
+#app {
+    font-family: kollektifbold;
+}
+
+.navtext {
+    text-align: center;
+    font-family: inherit;
+    font-size: 20px;
+}
+
+#titles {
+  text-align: center;
+}
+
+#avatar {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 132px;
+}
+
+#header-logo {
+    color: #5e548e;
+    font-size: 30px;
+    padding-bottom: 0;
+    width: 192px;
+    margin-left: 0px;
+    margin: auto;
+}
+
+footer {
+  display:grid;
+  grid-template: 100px / 2fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  bottom: 0;
+  width: 100%;
+  background-color: #5e548e;
+}
+
+#Footer-Logo {
+  grid-area: 1 / 1 / 2 / 2;
+  align-self: center;
+  justify-self: left;
+  height: 130px;
+  width: auto;
+}
+.footer-text {
+  font-size: 24px;
+  color: white;
+  background-color: #5e548e;
+  border-color:transparent;
+  text-align: center;
+  align-self: center;
+  margin: auto;
+  font-family:inherit;
+}
+.footer-text:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.15em);
+}
+#footer-home {
+  grid-area: 1 / 2 / 2 / 3;
+}
+#footer-about {
+  grid-area: 1 / 3 / 2 / 4;
+}
+#footer-for {
+  grid-area: 1 / 4 / 2 / 5;
+}
+#footer-profile {
+  grid-area: 1 / 5 / 2 / 6;
+}
+#footer-bookmark {
+  grid-area: 1 / 6 / 2 / 7;
+}
+h1 {
+    font-size: 56px;
+    color: #5e548e;
+    text-align: center;
+    margin-top: 150px;
+}
+h2 {
+    font-size: 36px;
+    color: #7275a5;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.scholarships {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  width: 400px;
+  height: 670px;
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.switch {
+  width: 75px;
+  height: 40px;
+  color: #add8e6;
+  left: 20px;
+  background-color: #7275a5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.switch:hover{
+  background-color: #7275a5
+}
+
+.bx-bxs-moon {
+  content: url('https://api.iconify.design/bx-bxs-moon.svg?color=White&height=20');
+  vertical-align: -0.125em;
+}
+.bx-bxs-sun {
+  content: url('https://api.iconify.design/bx-bxs-sun.svg?height=20');
+  vertical-align: -0.125em;
+}
+
+.scholarships .scholarship-card {
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  width: 93%;
+  height: 95%;
+  margin: auto;
+  top: 2.5%;
+}
+
+p {
+  word-wrap: break-word;
+  width: 700px;
+  margin-left: 30px;
+  font-size: 14px;
+  padding-bottom: 40px;
+  line-height: 1.5em;
+}
+
+h3 {
+  font-size: 20px;
+  color: #add8e6;
+  text-align: left;
+  margin-left: 40px;
+}
+
+#name {
+  padding-top: 30px;
+}
+
+.input {
+  width: 300px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: inset 0 0 5px #dddddd;
+  border-radius: 20px;
+  margin: auto;
+}
+
+.dropdown {
+  width: 300px;
+  margin-left: 40px;
+}
+
+#savechanges {
+  border-radius: 20px;
+  height: 40px;
+  width: 160px;
+  margin-left: 100px;
+  margin-top: 50px;
+  font-family: inherit;
+  margin-bottom: 25px;
+}
+
+#bookmarks {
+  border-radius: 20px;
+  height: 40px;
+  width: 160px;
+  font-family: inherit;
+}
+
+#logout {
+  border-radius: 20px;
+  height: 40px;
+  width: 160px;
+  font-family: inherit;
+}
+
+#bookmark-counter {
+  position: relative;
+  border-radius: 20px;
+  background: #add8e6;
+  border-color: transparent;
+  float: right;
+  margin-top: -20px;
+  z-index:2;
+}
+
+#outer
+{
+    width:100%;
+    text-align: center;
+    margin-top: 40px;
+}
+.inner
+{
+    display: inline-block;
+    z-index:1;
+}
+

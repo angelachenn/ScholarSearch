@@ -2,7 +2,7 @@
 <html>
 <head>
   <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
-  <link href="browse.css" rel="stylesheet">
+  <link href="foryou.css" rel="stylesheet">
   <link href="index.html">
   <link href="aboutus.html">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -31,8 +31,8 @@
             <vs-navbar-item class="navtext" :active="active == 'About Us'" onclick="document.location='./aboutus.html'">
               About Us
             </vs-navbar-item>
-            <vs-navbar-item class="navtext" :active="active == 'For You'">
-              For You
+            <vs-navbar-item class="navtext" :active="active == 'Browse'" onclick="document.location='./browse.html'">
+              Browse
             </vs-navbar-item>
           </div>
           <template #right>
@@ -329,9 +329,19 @@
               <h6 id="left">
                 Application Required: Yes
               </h6>
+              <div id="bookmarking">
+                <button id="bookmark-button" @click="buttonClicked(scholarship.id)">
+                  <i class=bookmark-icon>
+                  </i>
+                </button>
+                <button id="bookmark-counter">
+                  1
+                </button>
+              </div>
               <p>
                 A scholarship of up to $2,000 is given to the child of an Algoma University alumna or alumnus with the highest average on the 6 best U/M courses presented for admission. The candidate must enroll in and maintain 30 credits over 2 consecutive terms (fall/winter) of study at Algoma U. This award is non-renewable.
               </p>
+              
             </div>
           </div>
         </div>
@@ -353,22 +363,23 @@
         <button id="footer-home" class="footer-text" onclick="document.location='./'">
           Home
         </button>
-        <button id="footer-about" class="footer-text">
+        <button id="footer-about" class="footer-text" onclick="document.location='./aboutus.html'">
           About Us
         </button>
-        <button id="footer-for" class="footer-text">
-          For You
+        <button id="footer-for" class="footer-text" onclick="document.location='./browse.html'">
+          Browse
         </button>
-        <button id="footer-profile" class="footer-text">
+        <button id="footer-profile" class="footer-text" onclick="document.location='./profile.html'">
           Profile
         </button>
-        <button id="footer-bookmark" class="footer-text">
+        <button id="footer-bookmark" class="footer-text" onclick="document.location='./bookmarks.html'">
           Bookmarks
         </button>
       </footer>
   </div>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
-  <script src="browse.js"></script>
+  <script src="foryou.js"></script>
 </body>
 </html>

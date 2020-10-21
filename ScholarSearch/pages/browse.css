@@ -46,6 +46,7 @@ footer {
   height: 130px;
   width: auto;
 }
+
 .footer-text {
   font-size: 24px;
   color: white;
@@ -135,7 +136,7 @@ h2 {
   background-color: rgba(196, 196, 196, 0.2);
   font-family: inherit;
 }
-#scholarships {
+#scholarship-list {
   grid-area: 1 / 3 / 4 / 4;
   background: linear-gradient(180deg, #ADD8E6 0%, rgba(255, 255, 255, 0) 100%), #7275A5;
   border-radius: 20px;
@@ -247,4 +248,28 @@ p {
   font-size: 14px;
   padding-bottom: 40px;
   line-height: 1.5em;
+  display: inline-block;
+}
+#bookmarking {
+  display: block;
+  float: right;
+}
+#bookmark-button {
+  height: 80px;
+  width: 80px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ADD8E6 0%, rgba(255, 255, 255, 0) 100%), #7275A5;
+  border-color: transparent;
+}
+#bookmark-counter {
+  position: relative;
+  top: 15px;
+  right: 25px;
+  border-radius: 20px;
+  background: #add8e6;
+  border-color: transparent;
+}
+.bookmark-icon {
+  content: url('https://api.iconify.design/bi:bookmark.svg?height=50');
+  vertical-align: -0.125em;
 }

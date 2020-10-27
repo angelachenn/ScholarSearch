@@ -18,7 +18,7 @@
       <vs-button id="About-Us" color="#7275a5" onclick="document.location='aboutus.html'">
         About Us
       </vs-button>
-      <vs-button id="Login-Register" color="#5e548e" onclick="document.location='login.html'">
+      <vs-button id="Login-Register" color="#5e548e" @click="checkSession()">
         Login/Register
       </vs-button>
     </nav>
@@ -48,15 +48,17 @@
         <i class="bx-bxs-sun"></i>
       </template>
     </vs-switch>
+    <!--
     <vs-button onclick="document.location='test.html'">
       To Test
     </vs-button>
+    -->
     <footer>
       <img id="Footer-Logo" src="/assets/darkmodelogo.png" alt="ScholarSearch Logo">
       <vs-button id="About-Us-Footer" color="#7275a5" onclick="document.location='./aboutus.html'">
         About Us
       </vs-button>
-      <vs-button id="Login-Register-Footer" color="#7275a5" onclick="document.location='./login.html'">
+      <vs-button id="Login-Register-Footer" color="#7275a5" @click="checkSession()">
         Login/Register
       </vs-button>
     </footer>

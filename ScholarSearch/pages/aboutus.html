@@ -17,7 +17,7 @@
         <vs-button id="Home" color="#7275a5" onclick="document.location='./index.html'">
           Home
         </vs-button>
-        <vs-button id="Login-Register" color="#7275a5" onclick="document.location='./login.html'">
+        <vs-button id="Login-Register" color="#7275a5" @click="checkSession()">
           Login/Register
         </vs-button>
       </nav>
@@ -70,7 +70,7 @@
         <vs-button id="Home-Footer" color="#7275a5" onclick="document.location='./'">
           Home
         </vs-button>
-        <vs-button id="Login-Register-Footer" color="#7275a5" onclick="document.location='./login'">
+        <vs-button id="Login-Register-Footer" color="#7275a5" @click="checkSession()">
           Login/Register
         </vs-button>
       </footer>

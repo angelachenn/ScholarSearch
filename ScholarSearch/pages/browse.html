@@ -38,11 +38,16 @@
             </vs-navbar-item>
           </div>
           <template #right>
-            <vs-avatar id="avatar" color="#5e548e" size="60">
-              <template #text>
-                John Doe
-              </template>
-            </vs-avatar>
+            <div class="dropdown">
+            <button class="avatar" @click="profileDropdown()">
+              {{userInitial}}
+            </button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="profile.html">Profile</a>
+              <a href="bookmarks.html">My Bookmarks</a>
+              <a @click="logout()" id="logout">Logout</a>
+            </div>
+          </div>
           </template>
         </vs-navbar>
       </nav>
@@ -262,14 +267,12 @@
             <vs-select
               v-model="value5"
               class="Renewable"
-              multiple
-              filter
               placeholder="Renewable"
             >
               <vs-option label="Yes" value="1">
                 Yes
               </vs-option>
-              <vs-option label="Yes" value="2">
+              <vs-option label="No" value="2">
                 No
               </vs-option>
             </vs-select>
@@ -293,8 +296,6 @@
             <vs-select
               v-model="value4"
               class="Application"
-              multiple
-              filter
               placeholder="Application Required"
             >
               <vs-option label="Yes" value="1">
@@ -336,8 +337,12 @@
               </p>
               <div id="bookmarking">
                 <button id="bookmark-button" @click="buttonClicked(scholarship.id)">
-                  <i class=bookmark-icon>
-                  </i>
+                  <template v-if="!clicked">
+                    <i class=bookmark-icon> </i>
+                  </template>
+                  <template v-if="clicked">
+                    <i class=bookmark-filled></i>
+                </template>
                 </button>
                 <button id="bookmark-counter">
                   {{scholarship.numBookmarks}}
@@ -359,7 +364,9 @@
           <i class="bx-bxs-sun"></i>
         </template>
       </vs-switch>
+      <button onclick="topFunction()" id="backtotop"></button>
       <footer>
+        
         <img id="Footer-Logo" src="/assets/darkmodelogo.png" alt="ScholarSearch Logo">
         <button id="footer-home" class="footer-text" onclick="document.location='./'">
           Home
@@ -376,8 +383,43 @@
         <button id="footer-bookmark" class="footer-text" onclick="document.location='./bookmarks.html'">
           Bookmarks
         </button>
-      </footer>
+    </footer>
   </div>
+  <script>
+    //Get the button
+    var mybutton = document.getElementById("backtotop");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 100) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.avatar')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+    </script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>

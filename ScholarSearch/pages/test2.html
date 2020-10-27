@@ -3,37 +3,22 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
-  <title>Test 1</title>
+  <title>Test 2</title>
 </head>
 <body>
   <div id="app">
-    <vs-input
-      v-model="value"
-      class="search"
-      shadow
-      placeholder="Enter Name"
-      type="text"
-    >
-    </vs-input>
-    <button @click="enterInfo()">Enter</button>
+    <p> {{value}} </p>
   </div>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
-    new Vue({
+    new Vue ({
       el: '#app',
       data() {
         return {
-          value: ''
-        }
-      },
-      methods: {
-        enterInfo() {
-
-          localStorage.setItem("enteredInfo", this.value);
-          window.location.replace("http://localhost:5500/pages/test2.html");
+          value: localStorage.getItem("enteredInfo")
         }
       }
     })

@@ -16,10 +16,19 @@
 text-align: center;
 }
 
-#avatar {
+.avatar {
+  background-color: #5e548e;
+  height: 60px;
+  width: 60px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 132px;
+  border: none;
+  border-radius: 20px;
+  color: #FFFFFF;
+  z-index: 5;
+  font-family: kollektifbold;
+  font-size: 20px;
 }
 
 #header-logo {
@@ -272,3 +281,39 @@ margin-right: auto;
   content: url('https://api.iconify.design/bi:bookmark.svg?height=50');
   vertical-align: -0.125em;
 }
+.dropdown {
+  position: relative;
+  float: right;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px #ADD8E6;
+  right: 0;
+  border-radius: 15px;
+  margin-top: -30px;
+  z-index: -1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #7275a5;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+#logout {
+  color: #5e548e;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}

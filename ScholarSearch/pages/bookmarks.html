@@ -40,11 +40,16 @@
               </vs-navbar-item>
           </div>
           <template #right>
-            <vs-avatar id="avatar" color="#5e548e" size="60">
-              <template #text>
-                John Doe
-              </template>
-            </vs-avatar>
+            <div class="dropdown">
+              <button class="avatar" @click="profileDropdown()">
+                {{userInitial}}
+              </button>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="profile.html">Profile</a>
+                <a href="bookmarks.html">My Bookmarks</a>
+                <a @click="logout()" id="logout">Logout</a>
+              </div>
+            </div>
           </template>
         </vs-navbar>
       </nav>
@@ -53,49 +58,45 @@
           My Bookmarks
         </h1>
         <div class="scholarships">
-          <div class="scholarship-left">
+          <div class="scholarship" v-for="scholarship in scholarships" v-bind:key="scholarship.id">
         <h3 id="name">
-          Algoma University Alumni Award I
+          {{scholarship.name}}
         </h3>
+        <img class="minus-button" src="/assets/deletelight.png" alt="Delete Bookmark">
         <div id="buttons">
         <h5 id="university-name">
-          Algoma University
+          {{scholarship.university}}
         </h5>
         <h5 id="discipline-name">
-          All
+          {{scholarship.discipline}}
         </h5>
         <h5 id="amount">
-          $2000
+          {{scholarship.value}}
         </h5>
       </div>
         <h4 id="deadline">
-          June 30, 2021
+          {{scholarship.date}}
         </h4>
-        <div>
+        <div id ="first-row">
         <h4 id="renewable">
-          Renewable: No
+          Renewable: {{scholarship.renewable}}
         </h4>
         <h4 id="supplemental">
-          Application Required: Yes
+          Application Required: {{scholarship.supplemental}}
         </h4>
       </div>
-      <div>
+      <div id="second-row">
         <h5 id="level">
-          Level: Undergraduate
+          Level: {{scholarship.level}}
         </h5>
         <h5 id="quantity">
-          Quantity: 100
+          Quantity: {{scholarship.numSpots}}
         </h5>
       </div>
         <p>
-          peepeppefjwpigvegbuorffniw woefoungveoruguoboiq 
+          {{scholarship.description}}
         </p>
           </div>
-          <div class="scholarship-right">
-            <h3>
-              truu
-            </h3>
-        </div>
         </div>
     </main>
       <vs-switch
@@ -129,6 +130,21 @@
         </button>
       </footer>
   </div>
+  <script>
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.avatar')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>

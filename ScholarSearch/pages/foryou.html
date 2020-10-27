@@ -36,11 +36,16 @@
             </vs-navbar-item>
           </div>
           <template #right>
-            <vs-avatar id="avatar" color="#5e548e" size="60">
-              <template #text>
-                John Doe
-              </template>
-            </vs-avatar>
+            <div class="dropdown">
+              <button class="avatar" @click="profileDropdown()">
+                {{userInitial}}
+              </button>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="profile.html">Profile</a>
+                <a href="bookmarks.html">My Bookmarks</a>
+                <a @click="logout()" id="logout">Logout</a>
+              </div>
+            </div>
           </template>
         </vs-navbar>
       </nav>
@@ -377,6 +382,21 @@
         </button>
       </footer>
   </div>
+  <script>
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.avatar')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>

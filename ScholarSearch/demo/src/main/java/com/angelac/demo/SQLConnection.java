@@ -16,32 +16,50 @@ public class SQLConnection {
       resultSet = statement.executeQuery("SELECT * FROM scholarships");
     }
     catch (Exception exception) {
-      System.out.println("Man you made this error u suck poo: "  + exception);
+      System.out.println("Man you made this error u suck"  + exception);
     }
 
   }
+  
+  public void doQuery(String query) {
+    try {
+      resultSet = statement.executeQuery(query);
+    }
+    catch (Exception exception) {
+      System.out.println(exception);
+    }
+  }
 
-    public ResultSet getResultSet() {
-      return resultSet;
+  public void doUpdate(String query) {
+    try {
+     int a = statement.executeUpdate(query);
     }
+    catch(Exception e) {
+      System.out.println("pe" + e);
+    }
+  }
+
+  public ResultSet getResultSet() {
+    return resultSet;
+  }
     
-    public int getInt(int i) {
-      try {
-        return resultSet.getInt(i);
-      }
-      catch (Exception exception) {
-        System.out.println("exception");
-      }
-      return 0;
+  public int getInt(int i) {
+    try {
+      return resultSet.getInt(i);
     }
+      catch (Exception exception) {
+      System.out.println("exception");
+    }
+    return 0;
+  }
     
-    public String getString(int i) {
-      try {
-         return resultSet.getString(i); 
-      }
-      catch (Exception exception) {
-          System.out.println("u suck balls");
-      }
-      return "poo";
+  public String getString(int i) {
+    try {
+      return resultSet.getString(i); 
     }
+    catch (Exception exception) {
+      System.out.println("u suck balls");
+    }
+    return "poo";
+  }
 }

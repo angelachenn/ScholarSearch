@@ -10,22 +10,26 @@
   <title>ScholarSearch</title>
 </head>
 <body>
-  <div id="app"> 
+  <div id="app">
+    <!--Browse Page-->
     <nav>
+      <!--Navigation Bar-->
         <vs-navbar
           id="navbar"
           v-model="active"
           fixed
-          color="#add8e6"
           text-white
           square
           center-collapsed
         >
+        <!--Logo-->
           <template #left>
             <p id="header-logo">
               ScholarSearch
             </p>
           </template>
+
+          <!--Titles-->
           <div id="titles">
             <vs-navbar-item class="navtext" :active="active == 'Home'" onclick="document.location='./'">
               Home
@@ -37,6 +41,8 @@
               For You
             </vs-navbar-item>
           </div>
+
+          <!--Avatar and Dropdown-->
           <template #right>
             <div class="dropdown">
             <button class="avatar" @click="profileDropdown()">
@@ -51,13 +57,20 @@
           </template>
         </vs-navbar>
       </nav>
+
+      <!--Main Text-->
       <main>
+
+        <!--Title-->
         <h1>
           Browse
         </h1>
+        <!--Subtitle-->
         <h2>
           Your one stop shop for <b>all</b> Ontario Universities
         </h2>
+
+        <!--Search Bar and Button-->
         <div id="searching">
           <vs-input
             v-model="value"
@@ -69,7 +82,11 @@
           </vs-input>
           <button id="search-button"></button>
         </div>
+
+        <!--Scholarship and Sorting/Filtering Grid Section-->
         <div id="grid-section">
+
+          <!--Sorting Dropdown-->
           <div id="Sort">
             <vs-select
               v-model="value2"
@@ -106,6 +123,8 @@
               </vs-option>
             </vs-select>
           </div>
+
+          <!--University Filtering Dropdown-->
           <div id="Filter">
             <vs-select
               v-model="value3"
@@ -208,6 +227,8 @@
                 York University
               </vs-option>
             </vs-select>
+
+            <!--Discipline Filtering Dropdown-->
             <vs-select
               v-model="value4"
               class="Discipline"
@@ -264,6 +285,8 @@
                 Technology
               </vs-option>
             </vs-select>
+
+            <!--Renewable Filtering Dropdown-->
             <vs-select
               v-model="value5"
               class="Renewable"
@@ -276,6 +299,8 @@
                 No
               </vs-option>
             </vs-select>
+
+            <!--Level of Education Filtering Dropdown-->
             <vs-select
               v-model="value6"
               class="Level"
@@ -293,6 +318,8 @@
                 Doctorate
               </vs-option>
             </vs-select>
+
+            <!--Supplemental Application Filtering Dropdown-->
             <vs-select
               v-model="value4"
               class="Application"
@@ -306,6 +333,8 @@
               </vs-option>
             </vs-select>
           </div>
+
+          <!--Individual Scholarship Cards-->
           <div id="scholarship-list">
             <div id="scholarship-card" v-for="scholarship in scholarships" v-bind:key="scholarship.id">
               <h3>
@@ -335,6 +364,8 @@
               <p>
                 {{scholarship.description}}
               </p>
+
+              <!--Bookmark Button-->
               <div id="bookmarking">
                 <button id="bookmark-button" @click="buttonClicked(scholarship.id)">
                   <template v-if="!clicked">
@@ -344,6 +375,7 @@
                     <i class=bookmark-filled></i>
                 </template>
                 </button>
+                <!--Bookmark Button Number Display-->
                 <button id="bookmark-counter">
                   {{scholarship.numBookmarks}}
                 </button>
@@ -352,6 +384,8 @@
           </div>
         </div>
       </main>
+
+      <!--Light/Dark Mode Switch-->
       <vs-switch
         v-model="active5"
         class="switch"
@@ -364,10 +398,17 @@
           <i class="bx-bxs-sun"></i>
         </template>
       </vs-switch>
+
+      <!--Back to Top Button-->
       <button onclick="topFunction()" id="backtotop"></button>
+
+      <!--Footer-->
       <footer>
-        
+
+        <!--Footer Logo-->
         <img id="Footer-Logo" src="/assets/darkmodelogo.png" alt="ScholarSearch Logo">
+
+        <!--Footer Buttons-->
         <button id="footer-home" class="footer-text" onclick="document.location='./'">
           Home
         </button>
@@ -385,6 +426,8 @@
         </button>
     </footer>
   </div>
+
+  <!--JavaScript Code that was unable to be configured in the .js files-->
   <script>
     //Get the button
     var mybutton = document.getElementById("backtotop");

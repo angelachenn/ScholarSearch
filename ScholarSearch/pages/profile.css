@@ -33,12 +33,12 @@
 }
 
 #header-logo {
-    color: #5e548e;
-    font-size: 30px;
-    padding-bottom: 0;
-    width: 192px;
-    margin-left: 0px;
-    margin: auto;
+  color: #5e548e;
+  font-size: 30px;
+  padding-bottom: 0;
+  width: 192px;
+  margin-left: 0px;
+  margin: auto;
 }
 
 footer {
@@ -56,6 +56,7 @@ footer {
   height: 130px;
   width: auto;
 }
+
 .footer-text {
   font-size: 24px;
   color: white;
@@ -66,36 +67,44 @@ footer {
   margin: auto;
   font-family:inherit;
 }
+
 .footer-text:hover {
   box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
   transform: translateY(-0.15em);
 }
+
 #footer-home {
   grid-area: 1 / 2 / 2 / 3;
 }
+
 #footer-about {
   grid-area: 1 / 3 / 2 / 4;
 }
+
 #footer-for {
   grid-area: 1 / 4 / 2 / 5;
 }
+
 #footer-profile {
   grid-area: 1 / 5 / 2 / 6;
 }
+
 #footer-bookmark {
   grid-area: 1 / 6 / 2 / 7;
 }
+
 h1 {
-    font-size: 56px;
-    color: #5e548e;
-    text-align: center;
-    margin-top: 150px;
+  font-size: 56px;
+  color: #5e548e;
+  text-align: center;
+  margin-top: 150px;
 }
+
 h2 {
-    font-size: 36px;
-    color: #7275a5;
-    text-align: center;
-    margin-top: 30px;
+  font-size: 36px;
+  color: #7275a5;
+  text-align: center;
+  margin-top: 30px;
 }
 
 .scholarships {
@@ -181,9 +190,14 @@ h3 {
   height: 40px;
   width: 160px;
   margin-left: 100px;
+  background-color: #7275a5;
   margin-top: 50px;
   font-family: inherit;
   margin-bottom: 25px;
+}
+
+#savechanges:hover {
+  background-color: #7275a5;
 }
 
 #bookmarks {
@@ -191,13 +205,23 @@ h3 {
   height: 40px;
   width: 160px;
   font-family: inherit;
+  background-color: #7275a5;
+}
+
+#bookmarks:hover {
+  background-color: #7275a5;
 }
 
 #logout {
   border-radius: 20px;
   height: 40px;
   width: 160px;
+  background-color: #7275a5;
   font-family: inherit;
+}
+
+#logout:hover {
+  background-color: #7275a5;
 }
 
 #bookmark-counter {
@@ -210,16 +234,15 @@ h3 {
   z-index:2;
 }
 
-#outer
-{
-    width:100%;
-    text-align: center;
-    margin-top: 40px;
+#outer {
+  width:100%;
+  text-align: center;
+  margin-top: 40px;
 }
-.inner
-{
-    display: inline-block;
-    z-index:1;
+
+.inner {
+  display: inline-block;
+  z-index:1;
 }
 
 .dropdown {
@@ -250,7 +273,11 @@ h3 {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.show {
+  display:block;
+}

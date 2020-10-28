@@ -40,17 +40,15 @@ public class BookmarkController {
   public ArrayList<Bookmark> list() {
     return bookmarks;
   }
-
-  @GetMapping(path="{id}")
-  public Bookmark getBookmarkById (@PathVariable("id") int id) {
-    int real = 0;
-    for (int i = 0; i< bookmarks.size(); i++) {
-      if (bookmarks.get(i).getID() == id) {
-        real = i;
-        return bookmarks.get(i);
+  @GetMapping(path="{userID}")
+  public ArrayList<Bookmark> getBookmarkById (@PathVariable("userID") int userID) {
+    ArrayList<Bookmark> userArray = new ArrayList<Bookmark>(); 
+    for (int i = 0; i < bookmarks.size(); i++) {
+      if (bookmarks.get(i).getUserID()== userID) {
+        userArray.add(bookmarks.get(i));
       }
     }
-    return bookmarks.get(real);
+    return userArray;
   }
 
   @PostMapping

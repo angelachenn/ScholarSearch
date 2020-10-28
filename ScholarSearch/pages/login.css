@@ -11,7 +11,12 @@
 
 #Home {
   border-radius: 100px;
+  background-color: #7275a5;
   font-family : inherit;
+}
+
+#Home:hover {
+  background-color: #7275a5;
 }
 
 #right-side {
@@ -20,11 +25,13 @@
     box-shadow: 3px 3px 5px 6px #ccc;
   box-shadow: inset 0 0 5px #dddddd;
 }
+
 #left-side {
     background-color: #FFFFFF;
     grid-area: 1 / 1 / 2 / 2;
     margin-left: 100px;
 }
+
 #Home {
   background-color: #7275a5;
   border-radius: 20px;
@@ -34,10 +41,12 @@
   height: 40px;
   width: 160px;
 }
+
 #Login-Title {
   font-size: 40px;
   color: #add8e6;
 }
+
 #left-line {
   height: 5px;
   width: 240px;
@@ -47,9 +56,11 @@
   margin-bottom: 40px;
   margin-left: 0;
 }
+
 #Scholar-Search-Logo {
   text-align: right;
 }
+
 img {
   width: auto;
   height: 112px;
@@ -57,25 +68,30 @@ img {
   top: 20px;
   position: relative;
 }
+
 h2 {
   font-size: 18px;
   margin-bottom: 10px;
 }
+
 .left {
   color: #add8e6;
 }
+
 .input {
-  width: 260px; /*hi*/
+  width: 260px;
   font-family : inherit;
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: #FFFFFF;
   box-shadow: #000000;
 }
+
 h1 {
   color: #add8e6;
   font-size: 36px;
 }
+
 #Login-Button {
   background-color: #7275a5;
   width: 160px;
@@ -84,6 +100,7 @@ h1 {
   margin-top: 50px;
   font-family : inherit;
 }
+
 .switch {
   width: 75px;
   height: 40px;
@@ -101,14 +118,17 @@ h1 {
   content: url('https://api.iconify.design/bx-bxs-moon.svg?color=White&height=20');
   vertical-align: -0.125em;
 }
+
 .bx-bxs-sun {
   content: url('https://api.iconify.design/bx-bxs-sun.svg?height=20');
   vertical-align: -0.125em;
 }
+
 #Register-Title {
   color: white;
   margin-left: 100px;
 }
+
 #right-line {
   height: 5px;
   width: 240px;
@@ -118,10 +138,12 @@ h1 {
   margin-bottom: 40px;
   margin-left: 100px;
 }
+
 .right {
   color: #ffffff;
   margin-left: 100px;
 }
+
 .right-side {
   margin-left: 100px;
   border-radius: 20px;
@@ -135,16 +157,24 @@ h1 {
   margin-top: 50px;
   font-family: inherit;
   margin-bottom: 25px;
+  background-color: #7275a5;
 }
+
+#Create-Account:hover {
+  background-color: #7275a5;
+}
+
 p {
   font-size: 12;
   color: #ffffff;
   margin-left: 100px;
   margin-top: 50px;
 }
+
 #message {
   margin-top: 50px;
 }
+
 .dark-mode-app {
   background: rgba(0, 0, 0, 0.8);
 }

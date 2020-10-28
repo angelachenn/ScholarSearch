@@ -1,5 +1,7 @@
-logURL = "http://localhost:8080"
+//User JSON
 userURL = "http://localhost:8080/user"
+
+//Vue Instance
 new Vue({
     el: '#app',
       data: () => ({
@@ -17,26 +19,27 @@ new Vue({
       user: '',
       userInitial: ''
     }),
+
+    //Created Lifecycle Hook
     created() {
-      fetch (logURL)
-        .then(response => {
+
+      //Fetch logged in user's information
+      fetch (userURL + "/" + localStorage.getItem("id"))
+        .then (response => {
           return response.json();
         })
-        .then (session => {
-          this.session = session;
-          fetch (userURL + "/" + this.session.id)
-            .then (response => {
-              return response.json();
-            })
-            .then (user => {
-              this.user = user;
-              this.userInitial = this.user.name.substring(0,1).toUpperCase();
-              var a= this.user.name;
-              if (a.indexOf(" ") != -1) {
-                  this.userInitial += this.user.name.charAt(this.user.name.indexOf(" ") + 1).toUpperCase();
-                  a="";
-                }
-            })
+
+        //Use the user's name to create an initial to display on the avatar button
+        .then (user => {
+          this.user = user;
+          this.userInitial = this.user.name.substring(0,1).toUpperCase();
+          var a= this.user.name;
+
+          //If there is a space in their name (ex. user entered first and last name) make another initial for their last name
+          if (a.indexOf(" ") != -1) {
+              this.userInitial += this.user.name.charAt(this.user.name.indexOf(" ") + 1).toUpperCase();
+              a="";
+            }
         })
       },
     methods: {
@@ -44,19 +47,10 @@ new Vue({
       profileDropdown() {
         document.getElementById("myDropdown").classList.toggle("show");
       },
+
+      //Logs the user out of the session and reflects this change in the localStorage
       logout() {
-        fetch(logURL, {
-          method: "PATCH",
-          body: JSON.stringify ({
-            status: false
-          }),
-          headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-          }
-        })
-        .then (response => response.json())
-        .then (json => console.log(json))
-  
+        localStorage.setItem("status", false);
         window.location.replace("http://localhost:5500/pages/index.html");
       }
     }

@@ -1,69 +1,86 @@
+//Scholarship JSON
 const apiURL = "http://localhost:8080/scholarship"
-const logURL = "http://localhost:8080"
+//User JSON
 const userURL = "http://localhost:8080/user"
+//Bookmarks JSON
+const bookURL = "http://localhost:8080/bookmarks"
+
+//New Vue Instance
 new Vue({
-    el: '#app',
-      data: () => ({
+  el: '#app',
+
+  //Variables
+  data() {
+    return {
       active: '',
       active5: false,
-      bookmarked: [],
+      bookmarks: [],
       scholarships: [],
-      session: '',
+      scholarship: '',
       user: '',
-      userInitial: 'P'
-    }),
-    created() {
-      fetch(apiURL)
-        .then(response => {
-          return response.json();
-        })
-        .then(scholarships => {
-          this.scholarships = scholarships;
-          var i;
-          for ( i = 0; i< this.scholarships.length; i++ ) {
-            this.bookmarked[i] = false;
-          }
-        }),
-      fetch (logURL)
-        .then(response => {
-          return response.json();
-        })
-        .then (session => {
-          this.session = session;
-          fetch (userURL + "/" + this.session.id)
-            .then (response => {
+      userInitial: ''
+    }
+  },
+
+  //Created Lifecycle Hooks
+  created() {
+
+    //Fetch User Bookmarks
+    fetch(bookURL + "/" + localStorage.getItem("id"))
+      .then(response => {
+        return response.json();
+      })
+      .then(bookmarks => {
+        this.bookmarks = bookmarks;
+        
+        //Fetch Bookmarked Scholarship Information
+        var i;
+        for (i=0; i < this.bookmarks.length; i++) {
+          fetch (apiURL + "/" + this.bookmarks[i].scholarshipID)
+            .then(response => {
               return response.json();
             })
-            .then (user => {
-              this.user = user;
-              this.userInitial = this.user.name.substring(0,1).toUpperCase();
-              var a= this.user.name;
-              if (a.indexOf(" ") != -1) {
-                  this.userInitial += this.user.name.charAt(this.user.name.indexOf(" ") + 1).toUpperCase();
-                  a="";
-                }
+            .then (scholarship => {
+              this.scholarship = scholarship;
+              //add to array
+              this.scholarships.push(this.scholarship);
             })
+        }
+      }),
+    
+    //Fetch User Information
+    fetch (userURL + "/" + localStorage.getItem("id"))
+      .then (response => {
+        return response.json();
       })
-    },
-    methods: {
-    /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
-      profileDropdown() {
-        document.getElementById("myDropdown").classList.toggle("show");
-      },
-      logout() {
-        fetch(logURL, {
-          method: "PATCH",
-          body: JSON.stringify ({
-            status: false
-          }),
-          headers: {
-            "Content-Type": "application/json; charset=UTF-8"
-          }
-        })
-        .then (response => response.json())
-        .then (json => console.log(json))
+      .then (user => {
 
-        window.location.replace("http://localhost:5500/pages/index.html");
-      }
+        //Create Initials for User Avatar
+        this.user = user;
+        this.userInitial = this.user.name.substring(0,1).toUpperCase();
+        var a= this.user.name;
+        if (a.indexOf(" ") != -1) {
+            this.userInitial += this.user.name.charAt(this.user.name.indexOf(" ") + 1).toUpperCase();
+            a="";
+          }
+      })
+  },
+
+  //Methods
+  methods: {
+
+    /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+    profileDropdown() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    },
+
+    //Logout to change session 
+    logout() {
+      localStorage.setItem("status", false);
+
+      //switch window
+      window.location.replace("http://localhost:5500/pages/index.html");
+
     }
-  });
+  }
+});

@@ -2,6 +2,7 @@
     font-family: kollektifbold;
     src: url(/assets/Kollektif.ttf);
   }
+/* Light Mode */
 
 #app {
     font-family: kollektifbold;
@@ -305,3 +306,5 @@ p {
 .show {
   display:block;
 }
+
+/* Dark Mode */

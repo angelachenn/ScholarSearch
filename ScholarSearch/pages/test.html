@@ -1,42 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
+  <link href="test.css" rel="stylesheet">
   <title>Test 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
   <div id="app">
-    <vs-input
-      v-model="value"
-      class="search"
-      shadow
-      placeholder="Enter Name"
-      type="text"
-    >
-    </vs-input>
-    <button @click="enterInfo()">Enter</button>
-  </div>
+    <vs-switch id="button" @click="clicked()">Toggle Dark Mode</vs-switch>
+    <h1>Hey there! This is just a title</h2>
+    <p>I am just a boring text, existing here solely for the purpose of this demo</p>
+    <p>And I am just another one like the one above me, because two is better than having only one</p>
+    <a href="#">I am a link, don't click me!</a>
+    </div>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    new Vue({
-      el: '#app',
-      data() {
-        return {
-          value: ''
-        }
-      },
-      methods: {
-        enterInfo() {
-
-          localStorage.setItem("enteredInfo", this.value);
-          window.location.replace("http://localhost:5500/pages/test2.html");
-        }
-      }
-    })
-  </script>
+  <script src="test.js"></script>
 </body>
 </html>

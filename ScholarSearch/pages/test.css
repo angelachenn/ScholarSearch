@@ -1,0 +1,20 @@
+body {
+  background-color: white;
+  color: black;
+}
+
+#button {
+  background-color: red;
+}
+
+a {
+  color: purple;
+}
+
+body.dark-theme {
+  background-color: black;
+  color: white;
+}
+body.dark-theme a {
+  color: orange;
+}

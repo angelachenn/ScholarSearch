@@ -1,17 +1,19 @@
 @font-face {
-    font-family: kollektifbold;
-    src: url(/assets/Kollektif.ttf);
-  }
+  font-family: kollektifbold;
+  src: url(/assets/Kollektif.ttf);
+}
 
-#app {
-    font-family: kollektifbold;
+
+/* Light Mode */
+body {
+  font-family: kollektifbold;
 }
 
 .navtext {
-    font-size: 20px;
-    text-align: center;
-    font-family: inherit;
-    color: #fff;
+  font-size: 20px;
+  text-align: center;
+  font-family: inherit;
+  color: #fff;
 }
 
 #navbar {
@@ -23,27 +25,27 @@
 }
 
 .avatar {
-    background-color: #5e548e;
-    height: 60px;
-    width: 60px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 132px;
-    border: none;
-    border-radius: 20px;
-    color: #FFFFFF;
-    z-index: 5;
-    font-family: kollektifbold;
-    font-size: 20px;
-  }
+  background-color: #5e548e;
+  height: 60px;
+  width: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 132px;
+  border: none;
+  border-radius: 20px;
+  color: #FFFFFF;
+  z-index: 5;
+  font-family: kollektifbold;
+  font-size: 20px;
+}
 
 #header-logo {
-    color: #5e548e;
-    font-size: 30px;
-    padding-bottom: 0;
-    width: 192px;
-    margin-left: 0px;
-    margin: auto;
+  color: #5e548e;
+  font-size: 30px;
+  padding-bottom: 0;
+  width: 192px;
+  margin-left: 0px;
+  margin: auto;
 }
 
 footer {
@@ -56,9 +58,10 @@ footer {
 
 #Footer-Logo {
   grid-area: 1 / 1 / 2 / 2;
+  margin-left: 20px;
   align-self: center;
   justify-self: left;
-  height: 130px;
+  height: 70px;
   width: auto;
 }
 
@@ -378,7 +381,134 @@ p {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+.show {
+  display:block;
+}
+
+/* Dark Mode */
+
+body.dark-theme {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+body.dark-theme #header-logo {
+  color: #add8e6;
+}
+body.dark-theme .navtext {
+  color: #000;
+}
+
+body.dark-theme #navbar {
+  background-color: #5e548e;
+}
+
+body.dark-theme .avatar {
+  background-color: #add8e6;
+  color: #000;
+}
+
+body.dark-theme h1 {
+  color: #add8e6;
+}
+
+body.dark-theme h2 {
+  color: #add8e6;
+}
+
+body.dark-theme .search {
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25), inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+body.dark-theme #search-button {
+  background-color: #add8e6;
+}
+
+body.dark-theme #Sort {
+  background-color: #050505;
+}
+
+body.dark-theme #Filter {
+  background-color: #050505;
+}
+
+body.dark-theme #scholarship-list {
+  background: linear-gradient(180deg, #7275A5 0%, rgba(255, 255, 255, 0) 100%), #ADD8E6;
+}
+
+body.dark-theme #scholarship-card {
+  background: #161616;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme h3 {
+  color: #add8e6;
+}
+
+body.dark-theme h4 {
+  color: #add8e6;
+}
+
+body.dark-theme h5 {
+  color: #add8e6;
+}
+
+body.dark-theme #right-top {
+  color: white;
+}
+
+body.dark-theme p {
+  color: white;
+}
+
+body.dark-theme #bookmark-button {
+  background: linear-gradient(180deg, #7275a5 0%, rgba(255, 255, 255, 0) 100%), #add8e6;
+}
+
+body.dark-theme #bookmark-counter {
+  border-radius: 20px;
+  background: #7275a5;
+  color: white;
+}
+
+body.dark-theme #left {
+  color: white;
+}
+
+body.dark-theme .bookmark-icon {
+  content: url('https://api.iconify.design/bi:bookmark.svg?color=white&height=50');
+  vertical-align: -0.125em;
+}
+
+body.dark-theme .bookmark-filled {
+  content: url('https://api.iconify.design/mdi-bookmark.svg?color=white&height=50');
+  vertical-align: -0.125em;
+}
+
+body.dark-theme #backtotop {
+  background-image: url(/assets/topdark.png);
+}
+
+body.dark-theme .dropdown-content {
+  background-color: #161616;
+  box-shadow: 0px 8px 16px 0px #5e548e;
+}
+
+body.dark-theme .dropdown-content a {
+  color: #7275a5;
+}
+
+body.dark-theme #logout {
+  color: #add8e6;
+}
+
+/* Change color of dropdown links on hover */
+body.dark-theme .dropdown-content a:hover {
+  background-color: #282828;
+}

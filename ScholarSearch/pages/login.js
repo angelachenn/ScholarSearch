@@ -15,7 +15,7 @@ new Vue({
       value5: '',
       value6: '',
       value7: '',
-      active5: false,
+      themeSwitch: '',
       users: [],
       passwordError:'Invalid Password.'
     }
@@ -23,7 +23,7 @@ new Vue({
 
   //Created Lifecycle Hook
   created() {
-
+    this.getTheme();
     //Fetch User Information
     fetch(apiURL)
       .then(response => {
@@ -120,6 +120,58 @@ new Vue({
   //Methods
   methods:  {
 
+    //Retrieve user's preferred theme
+    getTheme() {
+      try {
+        this.mode = localStorage.getItem("theme");
+
+        if (this.mode == "light") {
+          this.themeSwitch = false;
+        } else {
+          this.themeSwitch = true;
+          this.firstTime();
+        }
+      }
+      catch (err) {
+        this.mode = "light";
+        localStorage.setItem("theme", "light");
+        this.themeSwitch = false;
+      }
+    },
+
+    firstTime() {
+      document.body.classList.toggle('dark-theme'); //Class to change all elements
+
+      //Logo Swap
+      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+      }
+      else {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+      }
+    },
+    //Switches Between Light and Dark Mode
+    theme() {
+
+      document.body.classList.toggle('dark-theme');
+
+      //LocalStorage Switches
+      if(localStorage.getItem("theme") == "light") {
+        localStorage.setItem("theme", "dark");
+      }
+      else if (localStorage.getItem("theme") ==  "dark") {
+        localStorage.setItem("theme", "light");
+      }
+
+      //Logo Swap
+      if (document.getElementById("Logo").src == "http://localhost:5500/assets/scholarsearch.png") {
+        document.getElementById("Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+      }
+      else {
+        document.getElementById("Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+      }
+
+    },
     //Checks for Valid Register and Builds New User
     checkRegistration() {
 

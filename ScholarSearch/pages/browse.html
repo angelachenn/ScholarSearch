@@ -368,10 +368,10 @@
               <!--Bookmark Button-->
               <div id="bookmarking">
                 <button id="bookmark-button" @click="buttonClicked(scholarship.id)">
-                  <template v-if="!clicked">
+                  <template v-if="!bookmarked[scholarship.id - 1]">
                     <i class=bookmark-icon> </i>
                   </template>
-                  <template v-if="clicked">
+                  <template v-if="bookmarked[scholarship.id - 1]">
                     <i class=bookmark-filled></i>
                 </template>
                 </button>
@@ -387,9 +387,10 @@
 
       <!--Light/Dark Mode Switch-->
       <vs-switch
-        v-model="active5"
+        v-model="themeSwitch"
         class="switch"
         color="#add8e6"
+        @click ="theme()"
       >
         <template #off>
           <i class="bx-bxs-moon"></i>

@@ -3,6 +3,7 @@
   src: url(/assets/Kollektif.ttf);
 }
 
+/* Light Mode */
 body {
   background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 40%),#add8e6;
   font-family: 'kollektifbold';
@@ -93,7 +94,7 @@ footer {
   grid-area: 1 / 1 / 3 / 2;
   align-self: center;
   justify-self: right;
-  height: 150px;
+  height: 110px;
   width: auto;
 }
 
@@ -149,4 +150,47 @@ footer {
 
 a {
   display: inline-block;
+}
+
+/* Dark Mode */
+
+body.dark-theme {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 4.17%, rgba(255, 255, 255, 0) 100%), #5E548E;
+}
+
+body.dark-theme #Name {
+  color: #add8e6;
+}
+
+body.dark-theme #About-Us {
+  color: black;
+}
+
+body.dark-theme #Login-Register {
+  background-color: #add8e6;
+  color: black;
+}
+
+body.dark-theme h2 {
+  color: #add8e6;
+}
+
+body.dark-theme footer {
+  background-color: #add8e6;
+} 
+
+body.dark-theme #About-Us-Footer {
+  color: #000000;
+}
+
+body.dark-theme #Login-Register-Footer {
+  color: #000000;
+}
+
+body.dark-theme p {
+  color: white;
+}
+
+body.dark-theme #right {
+  margin-top: 9px;
 }

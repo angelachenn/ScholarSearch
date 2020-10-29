@@ -70,9 +70,10 @@
 
       <!--Darkmode Switch-->
       <vs-switch
-        v-model="active5"
+        @click="theme()"
         class="switch"
         color="#add8e6"
+        v-model="themeSwitch"
       >
         <template #off>
           <i class="bx-bxs-moon"> </i>
@@ -87,7 +88,7 @@
     <!--Register Side-->
     <div id="right-side">
       <div id="Scholar-Search-Logo">
-        <img src="/assets/scholarsearch.png" alt="Scholar Search Logo">
+        <img id="Logo" src="/assets/scholarsearch.png" alt="Scholar Search Logo">
       </div>
       <h1 id="Register-Title">
         Register
@@ -96,11 +97,11 @@
 
       <!--User Register Information-->
       <h2 class="right">
-        Name:<span style="color:#7275a5">*</span>
+        Name:<span class="span">*</span>
       </h2>
       <vs-input
         v-model="value3"
-        class="input right-side"
+        class="inputr"
         shadow
         placeholder="John Doe"
         type="text"
@@ -108,11 +109,11 @@
     </vs-input>
 
       <h2 class="right">
-        Email:<span style="color:#7275a5">*</span>
+        Email:<span class="">*</span>
       </h2>
       <vs-input
         v-model="value4"
-        class="input right-side"
+        class="inputr"
         shadow
         placeholder="john.doe@gmail.com"
         type="text"
@@ -130,7 +131,7 @@
       </h2>
       <vs-input
         v-model="value5"
-        class="input right-side"
+        class="inputr"
         shadow
         placeholder="Password123"
         type="password"
@@ -149,6 +150,7 @@
       <vs-select
         v-model="value6"
         class="input right-side"
+        id="uni"
         filter
         placeholder="ABC University"
       >
@@ -253,6 +255,7 @@
       <vs-select
         v-model="value7"
         class="input right-side"
+        id="dis"
         filter
         placeholder="All"
       >
@@ -307,7 +310,7 @@
       </vs-select>
 
       <p>
-        Mandatory fields are marked with a <span style="color:#7275a5">*</span>. Optional fields will <br> allow us to recommend relevant scholarships to you.
+        Mandatory fields are marked with a <span>*</span>. Optional fields will <br> allow us to recommend relevant scholarships to you.
       </p>
       <h3 id="regError">
         Your name, email, and/or password is invalid. Please check your entries and try again.

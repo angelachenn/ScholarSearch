@@ -74,8 +74,9 @@
 
       <!--Light/dark Mode Switch-->
       <vs-switch
-        v-model="active5"
+        v-model="themeSwitch"
         class="switch"
+        @click="theme()"
         color="#add8e6"
       >
         <template #off>

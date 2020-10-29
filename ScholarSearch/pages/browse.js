@@ -20,7 +20,7 @@ new Vue({
       value5: '',
       value6: '',
       active: '',
-      active5: false,
+      themeSwitch: '',
       bookmarked: [],
       scholarshipclicked: 2,
       bookmarks:[],
@@ -165,11 +165,25 @@ new Vue({
     logout() {
       localStorage.setItem("status", false);
       window.location.replace("http://localhost:5500/pages/index.html");
+    },
+
+    //Switches Between Light Mode and Dark Mode
+    theme() {
+      document.body.classList.toggle('dark-theme'); //Class to change all elements
+
+      //Swap Footer Logo
+      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+      }
+      else {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+      }
+
     }
   },
   computed: {
     clicked() {
       return this.bookmarked[this.scholarshipclicked-1];
     }
-  } 
+  },
 });

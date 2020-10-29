@@ -5,19 +5,40 @@ new Vue({
   //Variables
   data() {
     return {
-      active5: false,
       loggedIn: '',
-      user_id: ''
+      user_id: '',
+      mode: '',
+      themeSwitch: ''
     }
   },
 
   //Created Lifecycle Hook
   created() {
     this.getLoggedIn();
+    this.getTheme();
   },
 
   //Methods
   methods: {
+
+    //Retrieves user's choice of theme
+    getTheme() {
+      try {
+        this.mode = localStorage.getItem("theme");
+
+        if (this.mode == "light") {
+          this.themeSwitch = false;
+        } else {
+          this.themeSwitch = true;
+          this.firstTime();
+        }
+      }
+      catch (err) {
+        this.mode = "light";
+        localStorage.setItem("theme", "light");
+        this.themeSwitch = false;
+      }
+    },
 
     //Check to see if User is logged in
     checkSession() {
@@ -38,16 +59,89 @@ new Vue({
         localStorage.setItem("status", false);
       }
     },
-    /*
-    getUserId() {
-      try {
-        this.user_id = localStorage.getItem("id");
+
+    //Switches Between Dark and Light Mode
+    theme() {
+      document.body.classList.toggle('dark-theme'); //Class to change all elements
+
+      //LocalStorage Switches
+      if(localStorage.getItem("theme") == "light") {
+        localStorage.setItem("theme", "dark");
       }
-      catch (err) {
-        this.user_id = 0;
-        localStorage.setItem("id", 0)
+      else if (localStorage.getItem("theme") ==  "dark") {
+        localStorage.setItem("theme", "light");
       }
+
+      //Main Logo Swap
+      if (document.getElementById("Logo").src == "http://localhost:5500/assets/scholarsearch.png") {
+        document.getElementById("Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+      }
+      else {
+        document.getElementById("Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+      }
+
+      //Diploma Image Swap
+      if (document.getElementById("left-image").src == "http://localhost:5500/assets/diploma.png") {
+        document.getElementById("left-image").src = "http://localhost:5500/assets/diplomadark.png";
+      }
+      else {
+        document.getElementById("left-image").src = "http://localhost:5500/assets/diploma.png";
+      }
+
+      //Piggybank Image Swap
+      if (document.getElementById("piggy").src == "http://localhost:5500/assets/piggy.png") {
+        document.getElementById("piggy").src = "http://localhost:5500/assets/piggydark.png";
+      }
+      else {
+        document.getElementById("piggy").src = "http://localhost:5500/assets/piggy.png";
+      }
+
+      //Footer Logo Swap
+      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+      }
+      else {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+      }
+
+    },
+
+    //Switches Between Dark and Light Mode when opened
+    firstTime() {
+      document.body.classList.toggle('dark-theme'); //Class to change all elements
+
+      //Main Logo Swap
+      if (document.getElementById("Logo").src == "http://localhost:5500/assets/scholarsearch.png") {
+        document.getElementById("Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+      }
+      else {
+        document.getElementById("Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+      }
+
+      //Diploma Image Swap
+      if (document.getElementById("left-image").src == "http://localhost:5500/assets/diploma.png") {
+        document.getElementById("left-image").src = "http://localhost:5500/assets/diplomadark.png";
+      }
+      else {
+        document.getElementById("left-image").src = "http://localhost:5500/assets/diploma.png";
+      }
+
+      //Piggybank Image Swap
+      if (document.getElementById("piggy").src == "http://localhost:5500/assets/piggy.png") {
+        document.getElementById("piggy").src = "http://localhost:5500/assets/piggydark.png";
+      }
+      else {
+        document.getElementById("piggy").src = "http://localhost:5500/assets/piggy.png";
+      }
+
+      //Footer Logo Swap
+      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+      }
+      else {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+      }
+
     }
-    */
   }
-  })
+})

@@ -1,16 +1,24 @@
 @font-face {
     font-family: kollektifbold;
     src: url(/assets/Kollektif.ttf);
-  }
+}
 
+/* Light Mode */
 #app {
-    font-family: kollektifbold;
+  font-family: kollektifbold;
+}
+
+body {
+  background-image: url('/assets/profilebg.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
 }
 
 .navtext {
-    text-align: center;
-    font-family: inherit;
-    font-size: 20px;
+  text-align: center;
+  font-family: inherit;
+  font-size: 20px;
 }
 
 #titles {
@@ -53,7 +61,8 @@ footer {
   grid-area: 1 / 1 / 2 / 2;
   align-self: center;
   justify-self: left;
-  height: 130px;
+  height: 70px;
+  margin-left: 20px;
   width: auto;
 }
 
@@ -212,7 +221,7 @@ h3 {
   background-color: #7275a5;
 }
 
-#logout {
+#logout-button {
   border-radius: 20px;
   height: 40px;
   width: 160px;
@@ -220,7 +229,7 @@ h3 {
   font-family: inherit;
 }
 
-#logout:hover {
+#logout-button:hover {
   background-color: #7275a5;
 }
 
@@ -280,4 +289,105 @@ h3 {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {
   display:block;
+}
+
+/* Dark Mode */
+
+body.dark-theme{
+  background-image: url('/assets/profiledark.png');
+}
+
+body.dark-theme #navbar {
+  background-color: #5e548e;
+}
+
+body.dark-theme .navtext {
+  color: black;
+}
+
+body.dark-theme .avatar {
+  background-color: #add8e6;
+  color: #000;
+}
+
+body.dark-theme #header-logo {
+  color: #add8e6;
+}
+
+body.dark-theme footer {
+  background-color: #add8e6;
+}
+
+body.dark-theme .footer-text {
+  color: black;
+  background-color: #add8e6;
+}
+
+body.dark-theme h1 {
+  color: #ADD8E6;
+}
+
+body.dark-theme h2 {
+  color: #add8e6;
+}
+
+body.dark-theme .scholarships {
+  background-color: #222222;
+}
+
+body.dark-theme .scholarship-card {
+  background-color: black;
+}
+
+body.dark-theme .input {
+  background-color: white;
+}
+
+body.dark-theme h3 {
+  color: #add8e6;
+}
+
+body.dark-theme #savechanges{
+  background-color: #5e548e;
+}
+
+body.dark-theme #bookmarks {
+  background-color: #add8e6;
+  color: #000
+}
+
+body.dark-theme #bookmarks:hover {
+  background-color: #add8e6;
+}
+
+body.dark-theme #logout-button {
+  background-color: #ADD8E6;
+  color: #000
+}
+
+body.dark-theme #logout-button:hover {
+  background-color: #add8e6;
+}
+
+body.dark-theme #bookmark-counter {
+  background: #5e548e;
+  color: #ffffff
+}
+
+body.dark-theme .dropdown-content {
+  background-color: #161616;
+  box-shadow: 0px 8px 16px 0px #5e548e;
+}
+
+body.dark-theme .dropdown-content a {
+  color: #7275a5;
+}
+
+body.dark-theme #logout {
+  color: #add8e6;
+}
+
+/* Change color of dropdown links on hover */
+body.dark-theme .dropdown-content a:hover {
+  background-color: #282828;
 }

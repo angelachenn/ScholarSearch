@@ -1,11 +1,12 @@
 @font-face {
     font-family: kollektifbold;
     src: url(/assets/Kollektif.ttf);
-  }
+}
+
 /* Light Mode */
 
-#app {
-    font-family: kollektifbold;
+body {
+  font-family: kollektifbold;
 }
 
 .navtext {
@@ -54,8 +55,9 @@ footer {
   grid-area: 1 / 1 / 2 / 2;
   align-self: center;
   justify-self: left;
-  height: 130px;
+  height: 70px;
   width: auto;
+  margin-left: 20px;
 }
 
 .footer-text {
@@ -261,9 +263,17 @@ p {
 }
 
 .minus-button {
-  padding-top: 20px;
-  padding-right: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
   vertical-align: top;
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  background-image: url(/assets/deletelight.png);
+  background-repeat: no-repeat;
+  height: 60px;
+  width: 60px;
 }
 
 .dropdown {
@@ -308,3 +318,69 @@ p {
 }
 
 /* Dark Mode */
+body.dark-theme {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+body.dark-theme #navbar {
+  background-color: #5e548e;
+}
+
+body.dark-theme .navtext {
+  color: black;
+}
+
+body.dark-theme .avatar {
+  background-color: #add8e6;
+  color: black;
+}
+
+body.dark-theme #header-logo {
+  color: #add8e6;
+}
+
+body.dark-theme footer {
+  background-color: #add8e6;
+}
+
+body.dark-theme .footer-text {
+  font-size: 24px;
+  color: black;
+  background-color: #add8e6;
+}
+
+body.dark-theme h1 {
+  color: #add8e6;
+}
+
+body.dark-theme h2 {
+  color: #add8e6;
+}
+
+body.dark-theme .scholarship-list {
+  background: linear-gradient(90deg, #7275A5 0%, rgba(255, 255, 255, 0) 99.88%), #ADD8E6;
+}
+
+body.dark-theme .scholarship-card {
+  background-color: black;
+}
+
+body.dark-theme h3 {
+  color: #add8e6;
+}
+
+body.dark-theme h4 {
+  color: #add8e6;
+}
+
+body.dark-theme h5 {
+  color: white;
+}
+
+body.dark-theme p {
+  color: white;
+}
+
+body.dark-theme .minus-button {
+  background-image: url(/assets/deletedark.png);
+}

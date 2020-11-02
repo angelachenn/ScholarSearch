@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import java.util.ArrayList;
 
 import com.angelac.demo.model.Bookmark;
@@ -16,7 +17,6 @@ import com.angelac.demo.SQLConnection;
 @RestController
 @RequestMapping("/bookmarks")
 @CrossOrigin
-
 public class BookmarkController {
 
   private ArrayList<Bookmark> bookmarks;
@@ -55,7 +55,7 @@ public class BookmarkController {
   public Bookmark createBookmark(@RequestBody Bookmark a) {
     bookmarks.add(a);
     try {
-      sqlConnection.doUpdate("INSERT INTO bookmarks(user_id, scholarship_id) VALUES ('"  + a.getUserID() +  "', '" + a.getScholarshipID() + "');");
+      sqlConnection.doUpdate("INSERT INTO bookmarks(bookmark_id, user_id, scholarship_id) VALUES ('" + a.getID() +"','"+ a.getUserID() +  "', '" + a.getScholarshipID() + "');");
     }
     catch(Exception exception) {
       System.out.println(exception);
@@ -75,6 +75,24 @@ public class BookmarkController {
           System.out.println(exception);
         }
       return bookmarks.remove(i);
+      }
+    }
+    return null;
+  }
+
+  @PatchMapping(path="{id}")
+  public Bookmark changeBookmark (@PathVariable("id") int id) {
+    for (int i = 0; i < bookmarks.size(); i++) {
+      if (bookmarks.get(i).getID() == id) {
+        bookmarks.get(i).setID(id - 1);
+
+        try {
+          sqlConnection.doUpdate("UPDATE bookmarks SET bookmark_id = " + bookmarks.get(i).getID() + " WHERE bookmark_id = " + id + ";");
+        }
+        catch (Exception e) {
+          System.out.println(e);
+        }
+        return bookmarks.get(i);
       }
     }
     return null;

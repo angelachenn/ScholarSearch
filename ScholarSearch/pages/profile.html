@@ -8,22 +8,10 @@
   <link href="aboutus.html">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>ScholarSearch</title>
-
-  <!--Background-->
-  <style>
-    body {
-      background-image: url('/assets/profilebg.png');
-      background-repeat: no-repeat;
-      background-attachment: fixed; 
-      background-size: 100% 100%;
-    }
-  </style>
-
 </head>
 
 <body>
   <div id="app"> 
-
     <!--Navigation-->
     <nav>
       <vs-navbar
@@ -306,16 +294,16 @@
       <div id="outer">
         <div class="inner">
           <div id="bookmarking">
-          <vs-button id="bookmarks" color="#7275a5" onclick="document.location='./bookmarks.html'">
+          <vs-button id="bookmarks" onclick="document.location='./bookmarks.html'">
           View My Bookmarks
           </vs-button>
           <button id="bookmark-counter">
-            2
+            {{bookmarks.length}}
           </button>
           </div>
         </div>
         <div class="inner">
-          <vs-button id="logout" @click="logout()">
+          <vs-button id="logout-button" @click="logout()">
             Logout
           </vs-button>
         </div>
@@ -324,9 +312,10 @@
 
     <!--Darkmode Switch-->
     <vs-switch
-      v-model="active5"
+      v-model="themeSwitch"
       class="switch"
       color="#add8e6"
+      @click="theme()"
     >
       <template #off>
         <i class="bx-bxs-moon"></i>

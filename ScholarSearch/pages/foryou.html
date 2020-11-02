@@ -386,9 +386,10 @@
 
        <!--Light/Dark Mode Switch-->
       <vs-switch
-        v-model="active5"
+        v-model="themeSwitch"
         class="switch"
         color="#add8e6"
+        @click="theme()"
       >
         <template #off>
           <i class="bx-bxs-moon"></i>

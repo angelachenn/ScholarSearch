@@ -1,6 +1,9 @@
 //User JSON
 const userURL = "http://localhost:8080/user"
 
+//Bookmark JSON
+const bookURL = "http://localhost:8080/bookmarks"
+
 //new Vue Instance
 new Vue({
   el: '#app',
@@ -10,17 +13,19 @@ new Vue({
     return {
       value: '',
       value3: '',
-      active5: false,
+      themeSwitch: '',
       active: '',
       user: '',
       userInitial: '',
-      value7:''
+      value7:'',
+      bookmarks:[]
     }
   },
 
   //Created Lifecycle Hook
   created() {
 
+    this.getTheme(),
     //Fetch Specific User using session id
     fetch (userURL + "/" + localStorage.getItem("id"))
      .then (response => {
@@ -36,6 +41,14 @@ new Vue({
            this.userInitial += this.user.name.charAt(this.user.name.indexOf(" ") + 1).toUpperCase();
            a="";
          }
+     }),
+
+    fetch (bookURL + "/" + localStorage.getItem("id"))
+     .then (response => {
+       return response.json();
+     })
+     .then (bookmarks => {
+       this.bookmarks = bookmarks;
      })
   },
 
@@ -118,6 +131,59 @@ new Vue({
       })
       .then (response => response.json())
       .then (json => console.log(json))
+    },
+
+    //Switches Between Light Mode and Dark Mode
+    theme() {
+      document.body.classList.toggle('dark-theme'); //Class to change all elements
+
+      //LocalStorage Switches
+      if(localStorage.getItem("theme") == "light") {
+        localStorage.setItem("theme", "dark");
+      }
+      else if (localStorage.getItem("theme") ==  "dark") {
+        localStorage.setItem("theme", "light");
+      }
+
+      //Swap Footer Logo
+      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+      }
+      else {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+      }
+    },
+
+    //Retrieves User's choice of Theme
+    getTheme() {
+      try {
+        this.mode = localStorage.getItem("theme");
+
+        if (this.mode == "light") {
+          this.themeSwitch = false;
+        } else {
+          this.themeSwitch = true;
+          this.firstTime();
+        }
+      }
+      catch (err) {
+        this.mode = "light";
+        localStorage.setItem("theme", "light");
+        this.themeSwitch = false;
+      }
+    },
+
+    //Sets theme when first opened
+    firstTime() {
+      document.body.classList.toggle('dark-theme'); //Class to change all elements
+
+      //Swap Footer Logo
+      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+      }
+      else {
+        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+      }
     }
   }
 })

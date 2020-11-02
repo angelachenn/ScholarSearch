@@ -512,3 +512,12 @@ body.dark-theme #logout {
 body.dark-theme .dropdown-content a:hover {
   background-color: #282828;
 }
+
+body.dark-theme footer {
+  background-color: #add8e6;
+}
+
+body.dark-theme .footer-text {
+  background-color: #add8e6;
+  color: black;
+}

@@ -74,7 +74,8 @@
           <h3 id="name">
             {{scholarship.name}}
           </h3>
-          <img class="minus-button" src="/assets/deletelight.png" alt="Delete Bookmark">
+          <button class="minus-button" @click="deleteBookmark(scholarship.id)">
+          </button>
           <div id="buttons">
             <h5 id="university-name">
               {{scholarship.university}}
@@ -114,9 +115,10 @@
 
     <!--Darkmode Switch-->
     <vs-switch
-      v-model="active5"
+      v-model="themeSwitch"
       class="switch"
       color="#add8e6"
+      @click="theme()"
     >
       <template #off>
         <i class="bx-bxs-moon"></i>

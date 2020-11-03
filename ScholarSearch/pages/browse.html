@@ -236,6 +236,9 @@
               multiple
               placeholder="Discipline"
             >
+              <vs-option label="All" value="All">
+                All
+              </vs-option>
               <vs-option label="Animal, Plants, and Food Studies" value="Animal, Plants, and Food Studies">
                 Animal, Plants, and Food Studies
               </vs-option>
@@ -244,9 +247,6 @@
               </vs-option>
               <vs-option label="Arts and Design" value="Arts and Design">
                 Arts and Design
-              </vs-option>
-              <vs-option label="Biology" value="Biology">
-                Biology
               </vs-option>
               <vs-option label="Business" value="Business">
                 Business
@@ -291,6 +291,8 @@
               v-model="filterRenewable"
               class="Renewable"
               placeholder="Renewable"
+              multiple
+              filter
             >
               <vs-option label="Yes" value="Yes">
                 Yes
@@ -308,8 +310,8 @@
               filter
               placeholder="Level of Education"
             >
-              <vs-option label="Bachelor's" value="Bachelor's">
-                Bachelor's
+              <vs-option label="Undergraduate" value="Undergraduate">
+                Undergraduate
               </vs-option>
               <vs-option label="Master's" value="Master's">
                 Master's
@@ -324,6 +326,8 @@
               v-model="filterSupplemental"
               class="Application"
               placeholder="Application Required"
+              multiple
+              filter
             >
               <vs-option label="Yes" value="Yes">
                 Yes
@@ -336,7 +340,7 @@
 
           <!--Individual Scholarship Cards-->
           <div id="scholarship-list">
-            <div id="scholarship-card" v-for="scholarship in scholarships" v-bind:key="scholarship.id">
+            <div id="scholarship-card" v-for="scholarship in dynamicArray" v-bind:key="scholarship.id">
               <h3>
                 {{ scholarship.name }}
               </h3>

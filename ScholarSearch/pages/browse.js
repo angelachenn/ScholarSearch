@@ -14,29 +14,28 @@ new Vue({
     return {
       scholarships:[],
       searchQuery: '',
-      sorting: '',
-      filterUniversity: '',
-      filterDiscipline:'',
-      filterRenewable: '',
-      filterLevel: '',
-      filterSupplemental: '',
+      sorting: 'Alphabetical',
+      filterUniversity: [],
+      filterDiscipline: [],
+      filterRenewable: [],
+      filterLevel: [],
+      filterSupplemental: [],
       active: '',
       themeSwitch: false,
       bookmarked: [],
       scholarshipclicked: 2,
       bookmarks:[],
-      session: '',
       newBookmark: '',
       user: '',
       userInitial: '',
       index: '',
-      //dynamicArrays: []
-    }
+      dynamicArray: [],
+      thirdArray: []
+    } 
   },
 
   //Created Lifecycle Hook
   created() {
-
     //Fetch Bookmarks
     fetch (bookURL)
       .then (response => {
@@ -52,7 +51,8 @@ new Vue({
           })
           .then (scholarships => {
             this.scholarships = scholarships;
-            //this.dynamicArrays = this.scholarships;
+            this.dynamicArray = this.scholarships;
+            this.thirdArray = this.scholarships;
 
             /*
             This is used to initalize the bookmarked array, which identifies whether the user has bookmarked a scholarship before or not
@@ -283,19 +283,338 @@ new Vue({
       else {
         document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
       }
-    }
-  },
+    },
 
-  watch: {
-    filterUniversity: function() {
-      if (this.filterUniversity != "") {
-        for (var i = 0; i < this.scholarships.length; i++) {
-          if (this.scholarships[i].university != this.filterUniversity) {
-            this.scholarships.splice(i,1);
-            i-=1;
+    //Filters Everything After Filter Change
+    mainFilter() {
+
+      /*It first filters through university, adding matching scholarships from this.scholarships
+      to this.dynamicArray. After this however, all filters will be based on the resultant array so we created thirdArray
+      to filter from afterwards.*/
+
+      //UNIVERSITY
+
+      //sets dynamicArray empty so it can add only matching scholarships
+      this.dynamicArray = [];
+      //makes sure if a filter is set
+      if (this.filterUniversity.length != 0) {
+
+        //goes through filters selected
+        for (var i=0; i<this.filterUniversity.length; i++) {
+
+          //goes through all scholarships and adds them to dynamicArray if they match query
+          for (var j = 0; j < this.scholarships.length; j++) {
+            if (this.filterUniversity[i] == this.scholarships[j].university) {
+              this.dynamicArray.push(this.scholarships[j]);
+            }
           }
         }
       }
+      else {
+        this.dynamicArray = this.scholarships.slice(0); //since no filters are set, dynamicArray is set to scholarships
+      }
+
+      //thirdArray is set to dynamicArray to filter from in the future
+      this.thirdArray = this.dynamicArray.slice(0);
+      //sets dynamicArray empty for next filter
+      this.dynamicArray = [];
+
+      //DISCIPLINE
+      //same process as above for filtering by university, but this time taking the already filtered array and narrowing it down even more
+      if (this.filterDiscipline.length != 0) {
+
+        for (var i = 0; i < this.filterDiscipline.length; i++) {
+          for (var j = 0; j < this.thirdArray.length; j++) {
+            if (this.filterDiscipline[i] == this.thirdArray[j].discipline) {
+              this.dynamicArray.push(this.thirdArray[j]);
+            }
+          }
+        }
+      }
+      else {
+        this.dynamicArray = this.thirdArray.slice(0);
+      }
+
+      this.thirdArray = this.dynamicArray.slice(0);
+      this.dynamicArray = [];  
+
+      //RENEWABLE
+      if (this.filterRenewable.length != 0) {
+
+        for (var i = 0; i < this.filterRenewable.length; i++) {
+          for (var j = 0; j < this.thirdArray.length; j++) {
+            if (this.filterRenewable[i] == this.thirdArray[j].renewable) {
+              this.dynamicArray.push(this.thirdArray[j]);
+            }
+          }
+        }
+      }
+      else {
+        this.dynamicArray = this.thirdArray.slice(0);
+      }
+
+      this.thirdArray = this.dynamicArray.slice(0);
+      this.dynamicArray = [];
+
+      //LEVEL
+      if (this.filterLevel.length != 0) {
+
+        for (var i = 0; i < this.filterLevel.length; i++) {
+          for (var j = 0; j < this.thirdArray.length; j++) {
+            if (this.filterLevel[i] == this.thirdArray[j].level) {
+              this.dynamicArray.push(this.thirdArray[j]);
+            }
+          }
+        }
+      }
+      else {
+        this.dynamicArray = this.thirdArray.slice(0);
+      }
+      
+      this.thirdArray = this.dynamicArray.slice(0);
+      this.dynamicArray = [];
+      
+      //SUPPLEMENTAL
+      if (this.filterSupplemental.length != 0) {
+
+        for (var i = 0; i < this.filterSupplemental.length; i++) {
+          for (var j = 0; j < this.thirdArray.length; j++) {
+            if (this.filterSupplemental[i] == this.thirdArray[j].supplemental) {
+              this.dynamicArray.push(this.thirdArray[j]);
+            }
+          }
+        }
+      }
+      else {
+        this.dynamicArray = this.thirdArray.slice(0);
+      }
+
+      //MAKE SURE TO SORT
+      this.sortArray();
+    },
+
+    //Sorts Array based on Preference
+    sortArray() {
+
+      //Switch For Different Sorting Strings
+      switch(this.sorting) {
+
+        //Sort By Closest Deadline
+        case "Closest Deadline":
+          
+          //Gets Current Date
+          var cDate = new Date();
+
+          //Bubble Sort to Sort Array
+          for (var i = 0; i < this.dynamicArray.length; i++) {
+            for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+              
+              //Compares Months of Deadlines, and puts No Deadline at end of array
+              if (Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j].date.substring(5,7))) < Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j + 1].date.substring(5,7))) || this.dynamicArray[j].date == "No Deadline") {
+                var temp = this.dynamicArray[j + 1];
+                this.dynamicArray[j + 1] = this.dynamicArray[j];
+                this.dynamicArray[j] = temp;
+              }
+
+              //If Months are Same, compares day
+              else if(Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j].date.substring(5,7))) == Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j + 1].date.substring(5,7)))) {
+                if (Math.abs(cDate.getDate() - parseInt(this.dynamicArray[j].date.substring(8))) > Math.abs((cDate.getDate()) - parseInt(this.dynamicArray[j + 1].date.substring(8)))) {
+                  var temp = this.dynamicArray[j + 1];
+                  this.dynamicArray[j + 1] = this.dynamicArray[j];
+                  this.dynamicArray[j] = temp;
+                }
+              }
+            }
+          }
+          break;
+        
+        //Sorts By Furthest Deadline
+        case "Furthest Deadline":
+
+          //retrieves the current date and assigns it to the cDate variable
+          var cDate = new Date();
+          
+          //bubble sort to sort the array
+          for (var i = 0; i < this.dynamicArray.length; i++) {
+            for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+
+              //checks to if see the MAGNITUDE/distance between deadline month and current month is greater or lesser between the 2 current elements
+              if (Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j].date.substring(5,7))) > Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j + 1].date.substring(5,7))) || this.dynamicArray[j+1].date == "No Deadline") {
+                var temp = this.dynamicArray[j + 1];
+                this.dynamicArray[j + 1] = this.dynamicArray[j];
+                this.dynamicArray[j] = temp;
+              }
+
+              //if months are equal, check the deadline and current Date
+              else if(Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j].date.substring(5,7))) == Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j + 1].date.substring(5,7)))) {
+                if (Math.abs(cDate.getDate() - parseInt(this.dynamicArray[j].date.substring(8))) < Math.abs((cDate.getDate()) - parseInt(this.dynamicArray[j + 1].date.substring(8)))) {
+                  var temp = this.dynamicArray[j + 1];
+                  this.dynamicArray[j + 1] = this.dynamicArray[j];
+                  this.dynamicArray[j] = temp;
+                }
+              }
+            }
+          }
+          break;
+
+        //Sorts By Highest Value
+        case "Highest Value":
+
+        //Bubble Sort
+          for (var i = 0; i < this.dynamicArray.length; i++) {
+            for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+
+              //Swaps if Value is Higher
+              if (this.dynamicArray[j].value < this.dynamicArray[j+1].value) {
+                var temp = this.dynamicArray[j+1];
+                this.dynamicArray[j+1] = this.dynamicArray[j];
+                this.dynamicArray[j] = temp;
+              }
+            }
+          }
+          break;
+          
+        //Sorts By Lowest Value
+        case "Lowest Value":
+          
+          //Bubble Sort
+          for (var i = 0; i < this.dynamicArray.length; i++) {
+            for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+
+              //Swaps if Value is Lower
+              if (this.dynamicArray[j].value > this.dynamicArray[j+1].value) {
+                var temp = this.dynamicArray[j+1];
+                this.dynamicArray[j+1] = this.dynamicArray[j];
+                this.dynamicArray[j] = temp;
+              }
+            }
+          }
+          break;
+
+        //Sorts by Most Bookmarks
+        case "Highest Popularity":
+
+          //Bubble Sort
+          for (var i = 0; i < this.dynamicArray.length; i++) {
+            for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+              
+              //Swaps if numBookmarks is Higher
+              if (this.dynamicArray[j].numBookmarks < this.dynamicArray[j+1].numBookmarks) {
+                var temp = this.dynamicArray[j+1];
+                this.dynamicArray[j+1] = this.dynamicArray[j];
+                this.dynamicArray[j] = temp;
+              }
+            }
+          }
+          break;
+        
+        //Sorts by least amount of bookmarks
+        case "Lowest Popularity":
+          
+        //Swaps if numBookmarks is lower
+          for (var i = 0; i < this.dynamicArray.length; i++) {
+            for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+              if (this.dynamicArray[j].numBookmarks > this.dynamicArray[j+1].numBookmarks) {
+                var temp = this.dynamicArray[j+1];
+                this.dynamicArray[j+1] = this.dynamicArray[j];
+                this.dynamicArray[j] = temp;
+              }
+            }
+          }
+          break;
+          
+        //Sorts by University Name, then Scholarship Name
+        case "Alphabetical":
+          
+          //Bubble Sort
+          for (var i = 0; i < this.dynamicArray.length; i++) {
+            for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+              
+              //Compares University Name
+              if (this.dynamicArray[j].university.localeCompare(this.dynamicArray[j + 1].university) > 0) {
+                var temp = this.dynamicArray[j + 1];
+                this.dynamicArray[j + 1] = this.dynamicArray[j];
+                this.dynamicArray[j] = temp;
+              }
+              else if (this.dynamicArray[j].university.localeCompare(this.dynamicArray[j + 1].university) == 0){
+                
+                //Compares Scholarship Name
+                if (this.dynamicArray[j].name.localeCompare(this.dynamicArray[j + 1].name) > 0) {
+                  var temp = this.dynamicArray[j + 1];
+                  this.dynamicArray[j + 1] = this.dynamicArray[j];
+                  this.dynamicArray[j] = temp;
+                }
+              }
+            }
+          }
+          break;
+        
+        //Sorts by highest amount of spots available (Scholarships with unlimited spots will show up at the top)
+        case "Highest Availability":
+          //bubble sort
+          for (var i = 0; i < this.dynamicArray.length; i++) {
+            for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+              //Compares numSpots, swaps if higher
+              if (this.dynamicArray[j].numSpots < this.dynamicArray[j+1].numSpots || this.dynamicArray[j+1].numSpots == "Unlimited") {
+                var temp = this.dynamicArray[j+1];
+                this.dynamicArray[j+1] = this.dynamicArray[j];
+                this.dynamicArray[j] = temp;
+              }
+            }
+          }
+          break;
+        
+        //Sorts by lowest amount of spots available (Scholarships with unlimited spots will be shown at the bottom)
+        case "Lowest Availability":
+
+          //Bubble Sort
+          for (var i = 0; i < this.dynamicArray.length; i++) {
+            for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+
+              //Swaps if numSpots is lower or if numSpots is unlimited
+              if (this.dynamicArray[j].numSpots > this.dynamicArray[j+1].numSpots || this.dynamicArray[j].numSpots == "Unlimited") {
+                var temp = this.dynamicArray[j+1];
+                this.dynamicArray[j+1] = this.dynamicArray[j];
+                this.dynamicArray[j] = temp;
+              }
+            }
+          }
+          break;
+      }
+    }
+  },
+
+  //methods that run when any change in value of a specific variable has been detected
+  watch: {
+
+    //university filter is changed
+    filterUniversity: function() {
+      this.mainFilter();
+    },
+
+    //discipline filter is changed
+    filterDiscipline: function() {
+      this.mainFilter();
+    },
+    
+    //renewable filter is changed
+    filterRenewable: function() {
+      this.mainFilter();
+    },
+
+    //level filter is changed
+    filterLevel: function() {
+      this.mainFilter();
+    },
+
+    //supplemental filter is changed
+    filterSupplemental: function() {
+      this.mainFilter();
+    },
+
+    //sorting is changed
+    sorting: function() {
+      this.sortArray();
     }
   }
 });

@@ -16,12 +16,13 @@ public class Scholarship {
   private int value;
   private String date;
   private String link;
-  private String coordinates;
+  private float latCoordinate;
+  private float longCoordinate;
   private String level;
 
   //Constructors
   public Scholarship(String name, String university, String discipline, int renewable, String description, int numBookmarks, int numSpots, int supplemental,
-   int value, String date, String link, String coordinates, String level) {
+   int value, String date, String link, float latCoordinate, float longCoordinate, String level) {
       this.ID = counter++;
       this.name = name;
       this.university = university;
@@ -55,7 +56,8 @@ public class Scholarship {
       }
       this.link = link;
       this.level = level;
-      this.coordinates = coordinates;
+      this.latCoordinate = latCoordinate;
+      this.longCoordinate = longCoordinate;
   }
   
   public Scholarship(String name, String university) {
@@ -64,7 +66,7 @@ public class Scholarship {
     this.university = university;
   }
 
-    //Getters and Setters
+  //Getters and Setters
   public int getID() {
       return ID;
   }
@@ -182,17 +184,25 @@ public class Scholarship {
       this.level = level;
   }
 
-  public String getCoordinates() {
-      return coordinates;
+  public float getLatCoordinate() {
+      return latCoordinate;
   }
 
-  public void setCoordinates(String coordinates) {
-      this.coordinates = coordinates;
+  public void setLatCoordinate(float latCoordinate) {
+      this.latCoordinate = latCoordinate;
+  }
+
+  public float getLongCoordinate() {
+    return longCoordinate;
+  }
+
+  public void setLongCoordinate(float longCoordinate) {
+    this.longCoordinate = longCoordinate;
   }
 
   @Override
   public String toString() {
-      return "Scholarship [ID=" + this.ID + ", coordinates=" + this.coordinates + ", date=" + this.date + ", description="
+      return "Scholarship [ID=" + this.ID + ", latCoordinate=" + this.latCoordinate + ", longCoordinate=" + this.longCoordinate + ", date=" + this.date + ", description="
               + this.description + ", discipline=" + this.discipline + ", level=" + this.level + ", link=" + this.link + ", name=" + this.name
               + ", numBookmarks=" + this.numBookmarks + ", numSpots=" + this.numSpots + ", renewable=" + this.renewable
               + ", supplemental=" + this.supplemental + ", university=" + this.university + ", value=" + this.value + "]";

@@ -305,6 +305,7 @@ p {
 #bookmarking {
   display: block;
   float: right;
+  z-index: 10;
 }
 
 #bookmark-button {

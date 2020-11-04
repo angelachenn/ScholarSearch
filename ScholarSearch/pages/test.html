@@ -2,7 +2,7 @@
 <html>
 <head>
   <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
-  <link href="browse.css" rel="stylesheet">
+  <link href="foryou.css" rel="stylesheet">
   <link href="index.html">
   <link href="aboutus.html">
   <link rel="shortcut icon" href="#">
@@ -37,8 +37,8 @@
             <vs-navbar-item class="navtext" :active="active == 'About Us'" onclick="document.location='./aboutus.html'">
               About Us
             </vs-navbar-item>
-            <vs-navbar-item class="navtext" :active="active == 'For You'" onclick="document.location='./foryou.html'">
-              For You
+            <vs-navbar-item class="navtext" :active="active == 'Browse'" onclick="document.location='./browse.html'">
+              Browse
             </vs-navbar-item>
           </div>
 
@@ -63,11 +63,11 @@
 
         <!--Title-->
         <h1>
-          Browse
+          For You
         </h1>
         <!--Subtitle-->
         <h2>
-          Your one stop shop for <b>all</b> Ontario Universities
+          Scholarships curated just for you
         </h2>
 
         <!--Search Bar and Button-->
@@ -80,7 +80,7 @@
             type="text"
           >
           </vs-input>
-          <button id="search-button"></button>
+          <button id="search-button" @click="mainFilter()"></button>
         </div>
 
         <!--Scholarship and Sorting/Filtering Grid Section-->
@@ -236,9 +236,9 @@
               multiple
               placeholder="Discipline"
             >
-            <vs-option label="All" value="All">
+              <vs-option label="All" value="All">
                 All
-            </vs-option>
+              </vs-option>
               <vs-option label="Animal, Plants, and Food Studies" value="Animal, Plants, and Food Studies">
                 Animal, Plants, and Food Studies
               </vs-option>
@@ -325,9 +325,9 @@
             <vs-select
               v-model="filterSupplemental"
               class="Application"
+              placeholder="Application Required"
               multiple
               filter
-              placeholder="Application Required"
             >
               <vs-option label="Yes" value="Yes">
                 Yes

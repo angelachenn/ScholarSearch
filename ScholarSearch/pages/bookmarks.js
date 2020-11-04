@@ -204,6 +204,12 @@ new Vue({
       }
     }
     return 0;
+    },
+
+    expand(scholarshipid){
+      const scholarship = this.scholarships.find(s => s.id === scholarshipid);
+      localStorage.setItem("scholarship", scholarship.id);
+      window.location.href ="http://localhost:5500/pages/scholarship.html";
     }
   }
 });

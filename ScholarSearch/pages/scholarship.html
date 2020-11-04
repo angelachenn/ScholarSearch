@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
+  <link href="scholarship.css" rel="stylesheet">
+  <link href="index.html">
+  <link href="aboutus.html">
+  <link rel="shortcut icon" href="#">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>ScholarSearch</title>
+</head>
+<body>
+  <div id="app">
+    <!--Browse Page-->
+    <nav>
+      <!--Navigation Bar-->
+        <vs-navbar
+          id="navbar"
+          v-model="active"
+          fixed
+          text-white
+          square
+          center-collapsed
+        >
+        <!--Logo-->
+          <template #left>
+            <p id="header-logo">
+              ScholarSearch
+            </p>
+          </template>
+
+          <!--Titles-->
+          <div id="titles">
+            <vs-navbar-item class="navtext" :active="active == 'Home'" onclick="document.location='./'">
+              Home
+            </vs-navbar-item>
+            <vs-navbar-item class="navtext" :active="active == 'About Us'" onclick="document.location='./aboutus.html'">
+              About Us
+            </vs-navbar-item>
+            <vs-navbar-item class="navtext" :active="active == 'For You'" onclick="document.location='./foryou.html'">
+              For You
+            </vs-navbar-item>
+          </div>
+
+          
+          <!--Avatar and Dropdown-->
+          <template #right>
+            <div class="dropdown">
+            <button class="avatar" @click="profileDropdown()">
+              {{userInitial}}
+            </button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="profile.html">Profile</a>
+              <a href="bookmarks.html">My Bookmarks</a>
+              <a @click="logout()" id="logout">Logout</a>
+            </div>
+          </div>
+          </template>
+        </vs-navbar>
+      </nav>
+
+      <!--Main Text-->
+      <main>
+        <!--Back Button-->
+        <button class="backbutton" @click="goBack()">
+            <i class=arrow-icon> </i>
+        </button>
+        <!--Individual Scholarship Cards-->
+        <div id="scholarship-list">
+          <div id="scholarship-card">
+            <h3>
+              {{scholarship.name}}
+            </h3>
+            <h4>
+              {{scholarship.date}}
+            </h4>
+            <h5>
+              Renewable: {{scholarship.renewable}}
+            </h5>
+            <h5 id="university-name">
+              {{scholarship.university}}
+            </h5>
+            <h5 id="discipline-name">
+              {{scholarship.discipline}}
+            </h5>
+            <h5 id="amount">
+              ${{scholarship.value}}
+            </h5>
+            <h6 id="right-top">
+              Quantity: {{scholarship.numSpots}} <br>Level: {{scholarship.level}}
+            </h6>
+            <h6 id="left">
+              Application Required: {{scholarship.supplemental}}
+            </h6>
+            <p>
+              {{scholarship.description}}
+            </p>
+            
+            <div id="link">
+              <!--Link Button-->
+              <button class="linkbutton" @click="redirect()">
+                More Information
+              </button>
+            </div>
+
+            <!--Bookmark Button-->
+            <div id="bookmarking">
+              <button id="bookmark-button" @click="buttonClicked()">
+                <template v-if="!bookmarked">
+                  <i class=bookmark-icon> </i>
+                </template>
+                <template v-if="bookmarked">
+                  <i class=bookmark-filled></i>
+                </template>
+              </button>
+              <!--Bookmark Button Number Display-->
+              <button id="bookmark-counter">
+                {{scholarship.numBookmarks}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!--Light/Dark Mode Switch-->
+      <vs-switch
+        v-model="themeSwitch"
+        class="switch"
+        color="#add8e6"
+        @click ="theme()"
+      >
+        <template #off>
+          <i class="bx-bxs-moon"></i>
+        </template>
+        <template #on>
+          <i class="bx-bxs-sun"></i>
+        </template>
+      </vs-switch>
+
+      <!--Back to Top Button-->
+      <button onclick="topFunction()" id="backtotop"></button>
+
+      <!--Footer-->
+      <footer>
+
+        <!--Footer Logo-->
+        <img id="Footer-Logo" src="/assets/darkmodelogo.png" alt="ScholarSearch Logo">
+
+        <!--Footer Buttons-->
+        <button id="footer-home" class="footer-text" onclick="document.location='./'">
+          Home
+        </button>
+        <button id="footer-about" class="footer-text" onclick="document.location='./aboutus.html'">
+          About Us
+        </button>
+        <button id="footer-for" class="footer-text" onclick="document.location='./foryou.html'">
+          For You
+        </button>
+        <button id="footer-profile" class="footer-text" onclick="document.location='./profile.html'">
+          Profile
+        </button>
+        <button id="footer-bookmark" class="footer-text" onclick="document.location='./bookmarks.html'">
+          Bookmarks
+        </button>
+    </footer>
+  </div>
+
+  <!--JavaScript Code that was unable to be configured in the .js files-->
+  <script>
+    //Get the button
+    var mybutton = document.getElementById("backtotop");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 100) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.avatar')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="scholarship.js"></script>
+</body>
+</html>

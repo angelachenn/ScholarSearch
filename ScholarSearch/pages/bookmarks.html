@@ -71,7 +71,7 @@
 
         <!--For-Each Loop to Display Scholarship Cards-->
         <div class="scholarship-card" v-for="scholarship in scholarships" v-bind:key="scholarship.id">
-          <h3 id="name">
+          <h3 id="name" @click="expand(scholarship.id)">
             {{scholarship.name}}
           </h3>
           <button class="minus-button" @click="deleteBookmark(scholarship.id)">

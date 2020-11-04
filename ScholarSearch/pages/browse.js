@@ -303,15 +303,15 @@ new Vue({
         for (var i=0; i<this.filterUniversity.length; i++) {
 
           //goes through all scholarships and adds them to dynamicArray if they match query
-          for (var j = 0; j < this.scholarships.length; j++) {
-            if (this.filterUniversity[i] == this.scholarships[j].university) {
-              this.dynamicArray.push(this.scholarships[j]);
+          for (var j = 0; j < this.thirdArray.length; j++) {
+            if (this.filterUniversity[i] == this.thirdArray[j].university) {
+              this.dynamicArray.push(this.thirdArray[j]);
             }
           }
         }
       }
       else {
-        this.dynamicArray = this.scholarships.slice(0); //since no filters are set, dynamicArray is set to scholarships
+        this.dynamicArray = this.thirdArray.slice(0); //since no filters are set, dynamicArray is set to scholarships
       }
 
       //thirdArray is set to dynamicArray to filter from in the future
@@ -389,7 +389,7 @@ new Vue({
         this.dynamicArray = this.thirdArray.slice(0);
       }
 
-      //MAKE SURE TO SORT
+      //Sort
       this.sortArray();
     },
 
@@ -581,6 +581,35 @@ new Vue({
           }
           break;
       }
+    },
+
+    //searchArray is used to search between scholarships, which then calls mainFilter() to filter and then sort
+    searchArray() {
+
+      
+      this.dynamicArray = [];
+
+      if (this.searchQuery != "") {
+
+        //Goes Through Array to check if scholarship contains search query
+        for (var i = 0; i < this.scholarships.length; i++) {
+          if((this.scholarships[i].name.toUpperCase().includes(this.searchQuery.toUpperCase())) || (this.scholarships[i].university.toUpperCase().includes(this.searchQuery.toUpperCase()))) {
+            this.dynamicArray.push(this.scholarships[i]);
+          }
+        }
+      }
+      else {
+        this.dynamicArray = this.scholarships.slice(0);
+      }
+
+      this.thirdArray = this.dynamicArray.slice(0);
+      this.mainFilter();
+    },
+
+    expand(scholarshipid){
+      const scholarship = this.scholarships.find(s => s.id === scholarshipid);
+      localStorage.setItem("scholarship", scholarship.id);
+      window.location.href = ("http://localhost:5500/pages/scholarship.html");
     }
   },
 
@@ -589,32 +618,32 @@ new Vue({
 
     //university filter is changed
     filterUniversity: function() {
-      this.mainFilter();
+      this.searchArray();
     },
 
     //discipline filter is changed
     filterDiscipline: function() {
-      this.mainFilter();
+      this.searchArray();
     },
     
     //renewable filter is changed
     filterRenewable: function() {
-      this.mainFilter();
+      this.searchArray();
     },
 
     //level filter is changed
     filterLevel: function() {
-      this.mainFilter();
+      this.searchArray();
     },
 
     //supplemental filter is changed
     filterSupplemental: function() {
-      this.mainFilter();
+      this.searchArray();
     },
 
     //sorting is changed
     sorting: function() {
       this.sortArray();
-    }
+    },
   }
 });

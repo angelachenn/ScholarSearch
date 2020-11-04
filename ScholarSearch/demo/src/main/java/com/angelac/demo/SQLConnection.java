@@ -16,7 +16,7 @@ public class SQLConnection {
       resultSet = statement.executeQuery("SELECT * FROM scholarships");
     }
     catch (Exception exception) {
-      System.out.println("Man you made this error u suck"  + exception);
+      System.out.println(exception);
     }
 
   }
@@ -34,8 +34,8 @@ public class SQLConnection {
     try {
      int a = statement.executeUpdate(query);
     }
-    catch(Exception e) {
-      System.out.println("pe" + e);
+    catch(Exception exception) {
+      System.out.println(exception);
     }
   }
 
@@ -48,7 +48,7 @@ public class SQLConnection {
       return resultSet.getInt(i);
     }
       catch (Exception exception) {
-      System.out.println("exception");
+      System.out.println(exception);
     }
     return 0;
   }
@@ -58,8 +58,18 @@ public class SQLConnection {
       return resultSet.getString(i); 
     }
     catch (Exception exception) {
-      System.out.println("u suck balls");
+      System.out.println(exception);
     }
     return "poo";
+  }
+
+  public float getFloat(int i) {
+    try {
+      return resultSet.getFloat(i);
+    }
+    catch (Exception exception) {
+      System.out.println(exception);
+    }
+    return 0;
   }
 }

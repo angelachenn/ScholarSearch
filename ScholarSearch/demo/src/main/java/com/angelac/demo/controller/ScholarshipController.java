@@ -26,7 +26,7 @@ public class ScholarshipController {
     try {
       sqlConnection.doQuery("SELECT * FROM scholarships");
       while(sqlConnection.getResultSet().next()) {
-        scholarships.add(new Scholarship (sqlConnection.getString(2), sqlConnection.getString(3), sqlConnection.getString(4), sqlConnection.getInt(5), sqlConnection.getString(6), sqlConnection.getInt(7), sqlConnection.getInt(8), sqlConnection.getInt(9), sqlConnection.getInt(10), sqlConnection.getString(11), sqlConnection.getString(12), sqlConnection.getString(13), sqlConnection.getString(14)));
+        scholarships.add(new Scholarship (sqlConnection.getString(2), sqlConnection.getString(3), sqlConnection.getString(4), sqlConnection.getInt(5), sqlConnection.getString(6), sqlConnection.getInt(7), sqlConnection.getInt(8), sqlConnection.getInt(9), sqlConnection.getInt(10), sqlConnection.getString(11), sqlConnection.getString(12), sqlConnection.getFloat(13), sqlConnection.getFloat(14), sqlConnection.getString(15)));
       }
     }
     catch (Exception e) {

@@ -32,7 +32,23 @@ new Vue({
        return response.json();
      })
      .then (user => {
-       this.user = user;
+        this.user = user;
+
+        //gets user's university
+        if (this.user.university != "" || this.user.university != null) {
+          this.value3 = this.user.university;
+        }
+        else {
+          this.value3 = "University";
+        }
+
+        //gets user's discipline
+        if (this.user.discipline != "" || this.user.discipline != null) {
+          this.value7 = this.user.discipline;
+        }
+        else {
+          this.value7 =  "Discipline";
+        }
 
        //Display User's initals 
        this.userInitial = this.user.name.substring(0,1).toUpperCase();
@@ -89,26 +105,6 @@ new Vue({
       return this.user.password;
     },
 
-    //get Discipline
-    getUserDiscipline() {
-      if (this.user.discipline=="null" || this.user.discipline=="" || this.user.discipline == null) {
-        return "Discipline";
-      } else {
-        this.value7 = this.user.discipline;
-        return this.user.discipline;
-      }
-    },
-
-    //get University
-    getUserUniversity(){
-      if (this.user.university=="null" || this.user.university=="" || this.user.university == null) {
-        return "University";
-      } else {
-        this.value3 = this.user.university; 
-        return this.user.university;
-      }
-    },
-
     //edit Profile to change user information
     editProfile(){
 
@@ -122,6 +118,8 @@ new Vue({
         body: JSON.stringify ({
           id: localStorage.getItem("id"),
           name: this.value,
+          email: this.user.email,
+          password: this.user.password,
           discipline: this.value7,
           university: this.value3
         }),

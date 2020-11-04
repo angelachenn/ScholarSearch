@@ -17,14 +17,6 @@ public class User {
     this.university = university;
     this.discipline = discipline;
   }
-  /*
-  public User(int id, String name, String password, String email) {
-    this.id = id;
-    this.name = name;
-    this.password = password;
-    this.email = email;
-  }
-*/
   public int getId() {
     return id;
   }

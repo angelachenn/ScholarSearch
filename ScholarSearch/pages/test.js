@@ -30,12 +30,34 @@ new Vue({
       userInitial: '',
       index: '',
       dynamicArray: [],
-      thirdArray: []
+      thirdArray: [],
+      lat: 3.0,
+      lng: 3.0
     } 
   },
 
   //Created Lifecycle Hook
   created() {
+
+    //Fetch the logged-in user's information
+    fetch (userURL + "/" + localStorage.getItem("id"))
+      .then (response => {
+        return response.json();
+      })
+
+      //Use the user's name to create an initial to display on the avatar button
+      .then (user => {
+        this.user = user;
+        this.userInitial = this.user.name.substring(0,1).toUpperCase();
+        var a= this.user.name;
+
+        //If there is a space in their name (ex. user entered first and last name) make another initial for their last name
+        if (a.indexOf(" ") != -1) {
+            this.userInitial += this.user.name.charAt(this.user.name.indexOf(" ") + 1).toUpperCase();
+            a="";
+          }
+      }),
+
     //Fetch Bookmarks
     fetch (bookURL)
       .then (response => {
@@ -51,9 +73,8 @@ new Vue({
           })
           .then (scholarships => {
             this.scholarships = scholarships;
-            this.dynamicArray = this.scholarships;
-            this.thirdArray = this.scholarships;
 
+            this.initializeArray();
             /*
             This is used to initalize the bookmarked array, which identifies whether the user has bookmarked a scholarship before or not
             We go through the scholarship array and bookmark array to find matching ones, to set to true, if none is found, it is false
@@ -73,25 +94,6 @@ new Vue({
               }
             }
           })
-      }),
-      
-    //Fetch the logged-in user's information
-    fetch (userURL + "/" + localStorage.getItem("id"))
-      .then (response => {
-        return response.json();
-      })
-
-      //Use the user's name to create an initial to display on the avatar button
-      .then (user => {
-        this.user = user;
-        this.userInitial = this.user.name.substring(0,1).toUpperCase();
-        var a= this.user.name;
-
-        //If there is a space in their name (ex. user entered first and last name) make another initial for their last name
-        if (a.indexOf(" ") != -1) {
-            this.userInitial += this.user.name.charAt(this.user.name.indexOf(" ") + 1).toUpperCase();
-            a="";
-          }
       }),
     
     //sets theme for user
@@ -288,9 +290,13 @@ new Vue({
     //Filters Everything After Filter Change
     mainFilter() {
 
-      /*It first filters through university, adding matching scholarships from this.scholarships
-      to this.dynamicArray. After this however, all filters will be based on the resultant array so we created thirdArray
-      to filter from afterwards.*/
+      /*All filters will be based on the resultant array so we created thirdArray*/
+
+      //If filter returns zero for some reason, thirdArray will need to reinitialize to the proper array
+      this.dynamicArray = [];
+
+      this.initializeArray();
+      //code fro method
 
       //UNIVERSITY
 
@@ -303,15 +309,15 @@ new Vue({
         for (var i=0; i<this.filterUniversity.length; i++) {
 
           //goes through all scholarships and adds them to dynamicArray if they match query
-          for (var j = 0; j < this.scholarships.length; j++) {
-            if (this.filterUniversity[i] == this.scholarships[j].university) {
-              this.dynamicArray.push(this.scholarships[j]);
+          for (var j = 0; j < this.thirdArray.length; j++) {
+            if (this.filterUniversity[i] == this.thirdArray[j].university) {
+              this.dynamicArray.push(this.thirdArray[j]);
             }
           }
         }
       }
       else {
-        this.dynamicArray = this.scholarships.slice(0); //since no filters are set, dynamicArray is set to scholarships
+        this.dynamicArray = this.thirdArray.slice(0); //since no filters are set, dynamicArray is set to for you scholarships
       }
 
       //thirdArray is set to dynamicArray to filter from in the future
@@ -393,19 +399,30 @@ new Vue({
       this.sortArray();
     },
 
+    //Sorts Array based on Preference
     sortArray() {
+
+      //Switch For Different Sorting Strings
       switch(this.sorting) {
+
+        //Sort By Closest Deadline
         case "Closest Deadline":
+          
+          //Gets Current Date
           var cDate = new Date();
-          var currentDate = cDate.getFullYear() + "-" + (cDate.getMonth() + 1) + "-" + cDate.getDate();
-          //if((cDate.getMonth + 1) - parseInt(this.dynamicArray[j].date.substring(5,7)) > (cDate.getMonth + 1) - parseInt(this.dynamicArray[j + 1].date.substring(5,7)))
+
+          //Bubble Sort to Sort Array
           for (var i = 0; i < this.dynamicArray.length; i++) {
             for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+              
+              //Compares Months of Deadlines, and puts No Deadline at end of array
               if (Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j].date.substring(5,7))) < Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j + 1].date.substring(5,7))) || this.dynamicArray[j].date == "No Deadline") {
                 var temp = this.dynamicArray[j + 1];
                 this.dynamicArray[j + 1] = this.dynamicArray[j];
                 this.dynamicArray[j] = temp;
               }
+
+              //If Months are Same, compares day
               else if(Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j].date.substring(5,7))) == Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j + 1].date.substring(5,7)))) {
                 if (Math.abs(cDate.getDate() - parseInt(this.dynamicArray[j].date.substring(8))) > Math.abs((cDate.getDate()) - parseInt(this.dynamicArray[j + 1].date.substring(8)))) {
                   var temp = this.dynamicArray[j + 1];
@@ -416,17 +433,25 @@ new Vue({
             }
           }
           break;
+        
+        //Sorts By Furthest Deadline
         case "Furthest Deadline":
+
+          //retrieves the current date and assigns it to the cDate variable
           var cDate = new Date();
-          var currentDate = cDate.getFullYear() + "-" + (cDate.getMonth() + 1) + "-" + cDate.getDate();
-          //if((cDate.getMonth + 1) - parseInt(this.dynamicArray[j].date.substring(5,7)) > (cDate.getMonth + 1) - parseInt(this.dynamicArray[j + 1].date.substring(5,7)))
+          
+          //bubble sort to sort the array
           for (var i = 0; i < this.dynamicArray.length; i++) {
             for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+
+              //checks to if see the MAGNITUDE/distance between deadline month and current month is greater or lesser between the 2 current elements
               if (Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j].date.substring(5,7))) > Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j + 1].date.substring(5,7))) || this.dynamicArray[j+1].date == "No Deadline") {
                 var temp = this.dynamicArray[j + 1];
                 this.dynamicArray[j + 1] = this.dynamicArray[j];
                 this.dynamicArray[j] = temp;
               }
+
+              //if months are equal, check the deadline and current Date
               else if(Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j].date.substring(5,7))) == Math.abs((cDate.getMonth() + 1) - parseInt(this.dynamicArray[j + 1].date.substring(5,7)))) {
                 if (Math.abs(cDate.getDate() - parseInt(this.dynamicArray[j].date.substring(8))) < Math.abs((cDate.getDate()) - parseInt(this.dynamicArray[j + 1].date.substring(8)))) {
                   var temp = this.dynamicArray[j + 1];
@@ -437,9 +462,15 @@ new Vue({
             }
           }
           break;
+
+        //Sorts By Highest Value
         case "Highest Value":
+
+        //Bubble Sort
           for (var i = 0; i < this.dynamicArray.length; i++) {
             for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+
+              //Swaps if Value is Higher
               if (this.dynamicArray[j].value < this.dynamicArray[j+1].value) {
                 var temp = this.dynamicArray[j+1];
                 this.dynamicArray[j+1] = this.dynamicArray[j];
@@ -448,9 +479,15 @@ new Vue({
             }
           }
           break;
+          
+        //Sorts By Lowest Value
         case "Lowest Value":
+          
+          //Bubble Sort
           for (var i = 0; i < this.dynamicArray.length; i++) {
             for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+
+              //Swaps if Value is Lower
               if (this.dynamicArray[j].value > this.dynamicArray[j+1].value) {
                 var temp = this.dynamicArray[j+1];
                 this.dynamicArray[j+1] = this.dynamicArray[j];
@@ -459,9 +496,15 @@ new Vue({
             }
           }
           break;
+
+        //Sorts by Most Bookmarks
         case "Highest Popularity":
+
+          //Bubble Sort
           for (var i = 0; i < this.dynamicArray.length; i++) {
             for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+              
+              //Swaps if numBookmarks is Higher
               if (this.dynamicArray[j].numBookmarks < this.dynamicArray[j+1].numBookmarks) {
                 var temp = this.dynamicArray[j+1];
                 this.dynamicArray[j+1] = this.dynamicArray[j];
@@ -470,7 +513,11 @@ new Vue({
             }
           }
           break;
+        
+        //Sorts by least amount of bookmarks
         case "Lowest Popularity":
+          
+        //Swaps if numBookmarks is lower
           for (var i = 0; i < this.dynamicArray.length; i++) {
             for (var j = 0; j < this.dynamicArray.length - 1; j++) {
               if (this.dynamicArray[j].numBookmarks > this.dynamicArray[j+1].numBookmarks) {
@@ -481,15 +528,23 @@ new Vue({
             }
           }
           break;
+          
+        //Sorts by University Name, then Scholarship Name
         case "Alphabetical":
+          
+          //Bubble Sort
           for (var i = 0; i < this.dynamicArray.length; i++) {
             for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+              
+              //Compares University Name
               if (this.dynamicArray[j].university.localeCompare(this.dynamicArray[j + 1].university) > 0) {
                 var temp = this.dynamicArray[j + 1];
                 this.dynamicArray[j + 1] = this.dynamicArray[j];
                 this.dynamicArray[j] = temp;
               }
               else if (this.dynamicArray[j].university.localeCompare(this.dynamicArray[j + 1].university) == 0){
+                
+                //Compares Scholarship Name
                 if (this.dynamicArray[j].name.localeCompare(this.dynamicArray[j + 1].name) > 0) {
                   var temp = this.dynamicArray[j + 1];
                   this.dynamicArray[j + 1] = this.dynamicArray[j];
@@ -499,9 +554,13 @@ new Vue({
             }
           }
           break;
+        
+        //Sorts by highest amount of spots available (Scholarships with unlimited spots will show up at the top)
         case "Highest Availability":
+          //bubble sort
           for (var i = 0; i < this.dynamicArray.length; i++) {
             for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+              //Compares numSpots, swaps if higher
               if (this.dynamicArray[j].numSpots < this.dynamicArray[j+1].numSpots || this.dynamicArray[j+1].numSpots == "Unlimited") {
                 var temp = this.dynamicArray[j+1];
                 this.dynamicArray[j+1] = this.dynamicArray[j];
@@ -510,9 +569,15 @@ new Vue({
             }
           }
           break;
+        
+        //Sorts by lowest amount of spots available (Scholarships with unlimited spots will be shown at the bottom)
         case "Lowest Availability":
+
+          //Bubble Sort
           for (var i = 0; i < this.dynamicArray.length; i++) {
             for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+
+              //Swaps if numSpots is lower or if numSpots is unlimited
               if (this.dynamicArray[j].numSpots > this.dynamicArray[j+1].numSpots || this.dynamicArray[j].numSpots == "Unlimited") {
                 var temp = this.dynamicArray[j+1];
                 this.dynamicArray[j+1] = this.dynamicArray[j];
@@ -522,10 +587,72 @@ new Vue({
           }
           break;
       }
+    },
+
+    initializeArray() {
+      
+      //goes through scholarship array to find which coordinates match the user's university
+      //used later on to display scholarships from universities in close proximity
+      this.dynamicArray = [];
+
+      if (this.searchQuery != "") {
+
+        //Goes Through Array to check if scholarship contains search query
+        for (var i = 0; i < this.scholarships.length; i++) {
+          if((this.scholarships[i].name.toUpperCase().includes(this.searchQuery.toUpperCase())) || (this.scholarships[i].university.toUpperCase().includes(this.searchQuery.toUpperCase()))) {
+            this.dynamicArray.push(this.scholarships[i]);
+          }
+        }
+      }
+      else {
+        this.dynamicArray = this.scholarships.slice(0);
+      }
+
+      this.thirdArray = this.dynamicArray.slice(0);
+      this.dynamicArray = [];
+
+      for (var i = 0; i< this.scholarships.length; i++) {
+        if (this.user.university == this.scholarships[i].university) {
+          this.lat = this.scholarships[i].latCoordinate;
+          this.lng = this.scholarships[i].longCoordinate;
+          break;
+        }
+      }
+
+      //Only displays relevant scholarships based on discipline
+      for (var i = 0; i < this.thirdArray.length; i ++) {
+        if(this.thirdArray[i].discipline == this.user.discipline || this.thirdArray[i].discipline == "All" || this.user.discipline == "") {
+          if(Math.abs(this.lat - this.thirdArray[i].latCoordinate) <= 5.00 && Math.abs(this.lng - this.thirdArray[i].longCoordinate) <= 5.00) {
+            this.dynamicArray.push(this.thirdArray[i]);
+          }
+        }
+      }
+      this.thirdArray = this.dynamicArray.slice(0);
+
+      //sorts so All discipline scholarships are at the end
+      for (var i = 0; i < this.dynamicArray.length; i ++) {
+        for (var j = 0; j < this.dynamicArray.length - 1; j ++) {
+          if (this.dynamicArray[j].discipline == "All") {
+            var temp = this.dynamicArray[j+1];
+            this.dynamicArray[j+1] = this.dynamicArray[j];
+            this.dynamicArray[j] = temp;
+          }
+        }
+      }
+
+      for (var i = 0; i < this.dynamicArray.length; i++) {
+        for (var j = 0; j < this.dynamicArray.length - 1; j++) {
+          if ((Math.sqrt(Math.pow((this.lat - this.dynamicArray[j].latCoordinate),2) + Math.pow((this.lng - this.dynamicArray[j].longCoordinate),2))) > (Math.sqrt(Math.pow((this.lat - this.dynamicArray[j +1].latCoordinate),2) + Math.pow((this.lng - this.dynamicArray[j +1].longCoordinate),2)))) {
+            var temp = this.dynamicArray[j+1];
+            this.dynamicArray[j+1] = this.dynamicArray[j];
+            this.dynamicArray[j] = temp;
+          }
+        }
+      } 
     }
   },
 
-  //methods that run when change in value of a specific variable has been detected, but all call same method
+  //methods that run when any change in value of a specific variable has been detected
   watch: {
 
     //university filter is changed

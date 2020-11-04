@@ -80,7 +80,7 @@
             type="text"
           >
           </vs-input>
-          <button id="search-button"></button>
+          <button id="search-button" @click="searchArray()"></button>
         </div>
 
         <!--Scholarship and Sorting/Filtering Grid Section-->
@@ -341,7 +341,7 @@
           <!--Individual Scholarship Cards-->
           <div id="scholarship-list">
             <div id="scholarship-card" v-for="scholarship in dynamicArray" v-bind:key="scholarship.id">
-              <h3>
+              <h3 @click="expand(scholarship.id)">
                 {{ scholarship.name }}
               </h3>
               <h4>
@@ -441,7 +441,7 @@
     window.onscroll = function() {scrollFunction()};
     
     function scrollFunction() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 100) {
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
         mybutton.style.display = "block";
       } else {
         mybutton.style.display = "none";

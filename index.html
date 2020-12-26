@@ -1,0 +1,90 @@
+<!--
+  Title: index.html
+  Structure of Splash Page, used to introduce user to ScholarSearch
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
+  <link href="index.css" rel="stylesheet">
+  <link href="aboutus.html">
+  <link href="login.html">
+  <link href="test.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title>ScholarSearch</title>
+</head>
+
+<body>
+  <div id="app"> 
+
+    <!--Navigation Bar-->
+    <nav>
+      <button id="Name">
+        ScholarSearch
+      </button>
+      <vs-button id="About-Us" onclick="document.location='aboutus.html'">
+        About Us
+      </vs-button>
+      <vs-button id="Login-Register" @click="checkSession()">
+        Login/Register
+      </vs-button>
+    </nav>
+
+    <!--Splash Page-->
+    <figure>
+      <!--Logo-->
+      <img id="Logo" src="/assets/scholarsearch.png" alt="ScholarSearch Logo">
+      <!--Slogan-->
+      <h2>All of your scholarships, in the same boat</h2>
+    </figure>
+
+    <!--Main Text-->
+    <main>
+
+      <!--Left Side-->
+      <section id="left">
+        <img id="left-image" src="/assets/diploma.png" alt="Image 1">
+        <p>&emsp;&emsp;&emsp;ScholarSearch is a web based organizational platform and educational resource where students can search, sort, manage, and filter through a database of scholarships offered by Ontario Universities, all in one place. By creating a profile, users can save scholarships and manage their bookmarks, and have their own customized feed display potential relevant scholarships based on their information and bookmarks (ex. same discipline and location). The individual scholarship cards themselves will contain all relevant information, as well as related links in order to connect the user directly to the respective university's page to apply.</p>
+      </section>
+
+      <!--Right Side-->
+      <section id="right">
+        <img id="piggy" src="/assets/piggy.png" alt="Image 2">
+        <p>&emsp;&emsp;&emsp;Post-secondary education can be expensive; we totally get it. Finance should not be a barrier to learning and unlocking your potential. That's why we've compiled all of these scholarships in one place so that you can take a look at ALL of your potential opportunities, without the stress or fear that you missed out or accidentally skipped over something important, and you may even discover a new interest in a certain university or discipline. More importantly, with your bookmarks, you can ensure that the scholarships you like will always be saved, and can always come back to them later. Made by students, for students; sign up for an account today and get searching!</p>
+      </section>
+
+    </main>
+
+    <!--Dark Mode Switch-->
+    <vs-switch
+      class="switch"
+      color="#add8e6"
+      v-model="themeSwitch"
+      @click="theme()"
+    >
+      <template #off>
+        <i class="bx-bxs-moon"></i>
+      </template>
+      <template #on>
+        <i class="bx-bxs-sun"></i>
+      </template>
+    </vs-switch>
+
+    <!--Footer-->
+    <footer>
+      <img id="Footer-Logo" src="/assets/darkmodelogo.png" alt="ScholarSearch Logo">
+      <vs-button id="About-Us-Footer" color="#7275a5" onclick="document.location='./aboutus.html'">
+        About Us
+      </vs-button>
+      <vs-button id="Login-Register-Footer" color="#7275a5" @click="checkSession()">
+        Login/Register
+      </vs-button>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

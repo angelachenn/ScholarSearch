@@ -1,0 +1,550 @@
+/*
+Title: foryou.css
+Stylesheet for foryou.html
+*/
+
+@font-face {
+  font-family: kollektifbold;
+  src: url(/assets/Kollektif.ttf);
+}
+
+
+/* Light Mode */
+
+body {
+  font-family: kollektifbold;
+}
+
+.navtext {
+  font-size: 20px;
+  text-align: center;
+  font-family: inherit;
+  color: #fff;
+}
+
+#navbar {
+  background-color: #add8e6;
+}
+
+#titles {
+  text-align: center;
+}
+
+.avatar {
+  background-color: #5e548e;
+  height: 60px;
+  width: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 132px;
+  border: none;
+  border-radius: 20px;
+  color: #FFFFFF;
+  z-index: 5;
+  font-family: kollektifbold;
+  font-size: 20px;
+}
+
+#header-logo {
+  color: #5e548e;
+  font-size: 30px;
+  padding-bottom: 0;
+  width: 192px;
+  margin-left: 0px;
+  margin: auto;
+}
+
+footer {
+  display:grid;
+  grid-template: 100px / 2fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  bottom: 0;
+  width: 100%;
+  background-color: #5e548e;
+}
+
+#Footer-Logo {
+  grid-area: 1 / 1 / 2 / 2;
+  margin-left: 20px;
+  align-self: center;
+  justify-self: left;
+  height: 70px;
+  width: auto;
+}
+
+.footer-text {
+  font-size: 24px;
+  color: white;
+  background-color: #5e548e;
+  border-color:transparent;
+  text-align: center;
+  align-self: center;
+  margin: auto;
+  font-family:inherit;
+}
+.footer-text:hover {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.15em);
+}
+
+#footer-home {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+#footer-about {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+#footer-for {
+  grid-area: 1 / 4 / 2 / 5;
+}
+
+#footer-profile {
+  grid-area: 1 / 5 / 2 / 6;
+}
+
+#footer-bookmark {
+  grid-area: 1 / 6 / 2 / 7;
+}
+
+h1 {
+    font-size: 56px;
+    color: #5e548e;
+    text-align: center;
+    margin-top: 150px;
+}
+
+h2 {
+    font-size: 36px;
+    color: #7275a5;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#searching {
+  width: 100%;
+  text-align: center;
+  height: 100px;
+}
+
+.search {
+  width: 750px;
+  height: 40px;
+  font-family : inherit;
+  margin: 30px 0px;
+  background-color: #FFFFFF;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: inset 0 0 5px #dddddd;
+  border-radius: 20px;
+  bottom: 15px;
+  color: #000000;
+  display:inline-block;
+}
+
+#search-button {
+  height:40px;
+  width: 50px;
+  display: inline-block;
+  background-color: #7275a5;
+  margin-left: 50px;
+  border-radius: 20px;
+  margin-left: 30px;
+  border-color: transparent;
+  position: absolute;
+  margin-top: 17px;
+}
+
+.searchicon{
+  content: url('https://api.iconify.design/ant-design:search-outlined.svg?color=white&height=20');
+  vertical-align: -0.125em;
+}
+
+#grid-section {
+  display:grid;
+  grid-template: 120px 350px 1fr / 1fr 200px 4fr 1fr;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  margin-top: 20px;
+}
+
+.sortfilter {
+  font-size: 26px;
+}
+
+#Sort {
+  grid-area: 1 / 2 / 2 / 3;
+  border-radius: 20px;
+  background-color: rgba(196, 196, 196, 0.0);
+}
+
+#Filter {
+  grid-area: 2 / 2 / 3 / 3;
+  border-radius: 20px;
+  background-color: rgba(196, 196, 196, 0.0);
+  font-family: inherit;
+}
+
+#scholarship-list {
+  grid-area: 1 / 3 / 4 / 4;
+  background: linear-gradient(180deg, #ADD8E6 0%, rgba(255, 255, 255, 0) 100%), #7275A5;
+  border-radius: 20px;
+}
+
+.switch {
+  width: 75px;
+  height: 40px;
+  color: #add8e6;
+  left: 20px;
+  background-color: #7275a5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.switch:hover{
+  background-color: #7275a5
+}
+
+.bx-bxs-moon {
+  content: url('https://api.iconify.design/bx-bxs-moon.svg?color=White&height=20');
+  vertical-align: -0.125em;
+}
+
+.bx-bxs-sun {
+  content: url('https://api.iconify.design/bx-bxs-sun.svg?height=20');
+  vertical-align: -0.125em;
+}
+
+.Sort-By {
+  font-family: inherit;
+}
+
+.Filter-By {
+  font-family: inherit;
+}
+
+.University {
+  margin-bottom: 20px;
+}
+
+.Discipline {
+  margin-bottom: 20px;
+}
+
+.Renewable {
+  margin-bottom: 20px;
+}
+
+.Level {
+  margin-bottom: 20px;
+}
+
+.Application {
+  margin-bottom: 20px;
+}
+
+#scholarship-card {
+  margin: 20px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+h3 {
+  font-size: 28px;
+  color: #5e548e;
+  padding-top: 50px;
+  margin-left: 30px;
+}
+
+h4 {
+  font-size: 18px;
+  color: #5e548e;
+  text-align: right;
+  margin-right: 30px;
+}
+
+h5 {
+  font-size: 18px;
+  color: #5e548e;
+  text-align: right;
+  margin-right: 30px;
+  margin-top: 15px;
+}
+
+#university-name, #discipline-name, #amount {
+  display: inline-block;
+  width: auto;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+#university-name {
+  margin-left: 30px;
+  color: black;
+  background-color: #add8e6;
+}
+
+#discipline-name {
+  color: white;
+  background-color: #7275a5;
+}
+
+#amount {
+  color: white;
+  background-color: #5e548e;
+}
+
+#right-top {
+  float: right;
+  margin-right: 30px;
+  text-align: right;
+  font-size: 16px;
+  display: block;
+  margin-top: 15px;
+  line-height: 31px;
+}
+
+#left {
+  padding: 30px;
+  font-size: 16px;
+}
+
+#bottom {
+  display: grid;
+  grid-template: 1fr 40px/ 700px 1fr
+}
+
+p {
+  grid-area: 1 / 1 / 2 / 2;
+  word-wrap: break-word;
+  margin-left: 30px;
+  line-height: 1.5em;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+#bookmarking {
+  grid-area : 1 / 2 / 2 / 3;
+  display: inline-block;
+  text-align: right;
+  z-index: 10;
+  margin-bottom: 20px;
+}
+
+#bookmark-button {
+  float: right;
+  margin-right: 30px;
+  bottom: 30px;
+  margin-top: 20px;
+  height: 80px;
+  width: 80px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ADD8E6 0%, rgba(255, 255, 255, 0) 100%), #7275A5;
+  border-color: transparent;
+}
+
+#bookmark-counter {
+  position: relative;
+  top: 85px;
+  left: 85px;
+  border-radius: 20px;
+  background: #add8e6;
+  border-color: transparent;
+}
+
+.bookmark-icon {
+  content: url('https://api.iconify.design/bi:bookmark.svg?height=50');
+  vertical-align: -0.125em;
+}
+
+.bookmark-filled {
+  content: url('https://api.iconify.design/mdi-bookmark.svg?height=50');
+  vertical-align: -0.125em;
+}
+
+#backtotop {
+  position: fixed; /* Fixed/sticky position */
+  bottom: 120px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  background-image: url(/assets/toplight.png);
+  background-repeat: no-repeat;
+  height: 80px;
+  width: 80px;
+}
+
+.dropdown {
+  position: relative;
+  float: right;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px #ADD8E6;
+  right: 0;
+  border-radius: 15px;
+  margin-top: -30px;
+  z-index: -1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #7275a5;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+#logout {
+  color: #5e548e;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display:block;
+}
+
+/* Dark Mode */
+
+body.dark-theme {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+body.dark-theme #header-logo {
+  color: #add8e6;
+}
+body.dark-theme .navtext {
+  color: #000;
+}
+
+body.dark-theme #navbar {
+  background-color: #5e548e;
+}
+
+body.dark-theme .avatar {
+  background-color: #add8e6;
+  color: #000;
+}
+
+body.dark-theme h1 {
+  color: #add8e6;
+}
+
+body.dark-theme h2 {
+  color: #add8e6;
+}
+
+body.dark-theme .search {
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.25), inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+body.dark-theme #search-button {
+  background-color: #add8e6;
+}
+
+body.dark-theme #scholarship-list {
+  background: linear-gradient(180deg, #7275A5 0%, rgba(255, 255, 255, 0) 100%), #ADD8E6;
+}
+
+body.dark-theme #scholarship-card {
+  background: #161616;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme h3 {
+  color: #add8e6;
+}
+
+body.dark-theme h4 {
+  color: #add8e6;
+}
+
+body.dark-theme h5 {
+  color: #add8e6;
+}
+
+body.dark-theme #right-top {
+  color: white;
+}
+
+body.dark-theme p {
+  color: white;
+}
+
+body.dark-theme #bookmark-button {
+  background: linear-gradient(180deg, #7275a5 0%, rgba(255, 255, 255, 0) 100%), #add8e6;
+}
+
+body.dark-theme #bookmark-counter {
+  border-radius: 20px;
+  background: #7275a5;
+  color: white;
+}
+
+body.dark-theme #left {
+  color: white;
+}
+
+body.dark-theme .bookmark-icon {
+  content: url('https://api.iconify.design/bi:bookmark.svg?color=white&height=50');
+  vertical-align: -0.125em;
+}
+
+body.dark-theme .bookmark-filled {
+  content: url('https://api.iconify.design/mdi-bookmark.svg?color=white&height=50');
+  vertical-align: -0.125em;
+}
+
+body.dark-theme #backtotop {
+  background-image: url(/assets/topdark.png);
+}
+
+body.dark-theme .dropdown-content {
+  background-color: #161616;
+  box-shadow: 0px 8px 16px 0px #5e548e;
+}
+
+body.dark-theme .dropdown-content a {
+  color: #7275a5;
+}
+
+body.dark-theme #logout {
+  color: #add8e6;
+}
+
+/* Change color of dropdown links on hover */
+body.dark-theme .dropdown-content a:hover {
+  background-color: #282828;
+}
+
+body.dark-theme footer {
+  background-color: #add8e6;
+}
+
+body.dark-theme .footer-text {
+  background-color: #add8e6;
+  color: black;
+}
+
+body.dark-theme .searchicon {
+  content: url('https://api.iconify.design/ant-design:search-outlined.svg?height=20');
+}

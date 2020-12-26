@@ -1,0 +1,146 @@
+<!--
+  Title: aboutus.html
+  Structure of About Us Page, which describes the project and creators
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.css" rel="stylesheet">
+  <link href="aboutus.css" rel="stylesheet">
+  <link href="index.html">
+  <link href="login.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <title>ScholarSearch</title>
+</head>
+<body>
+
+  <!--About Us Page-->
+  <div id="app"> 
+
+    <!--Navigation Bar-->
+    <nav>
+
+      <!--Logo Text-->
+      <button id="Name">
+        ScholarSearch
+      </button>
+
+      <!--Home and Login/Register Buttons-->
+      <vs-button id="Home" onclick="document.location='./index.html'">
+        Home
+      </vs-button>
+      <vs-button id="Login-Register" @click="checkSession()">
+        Login/Register
+      </vs-button>
+    </nav>
+
+    <!--Title-->
+    <h1>
+      About Us
+    </h1>
+
+    <!--Main Text-->
+    <main>
+
+      <!--Who We Are Section-->
+      <h2>
+        Who We Are
+      </h2>
+      <p>
+        &emsp;&emsp;ScholarSearch is proudly brought to you by Angela Chen and Aryan Chawla, two seniors at Earl of March Secondary School. We hope that this tool succeeds in aiding you in finding opportunities and simplifying financial situations for post-secondary education. Shoutout to Mr Roller, our project manager, and Iris Yao & Victoria Gardner for being our primary clients. Another big thank you to Jackie Chen who gave us inspiration for our logo.
+        <br>
+        <br>
+        Go follow us on Instagram @angela.chn and @aryan.chawlad
+      </p>
+
+      <!--Our Goals Section-->
+      <h2>
+        Our Goals
+      </h2>
+      <p>
+        &emsp;&emsp;Post-secondary education can be expensive. The goal for ScholarSearch is to become the primary one-stop platform that students visit to explore and manage university scholarships. It will help students search for the scholarships they are interested in, filter scholarships by the field and/or university they desire, and even expand their opportunities by recommending personalized scholarships that they may not have known about.
+        <br>
+        <br>
+        &emsp;&emsp;As students who also pertain to the target audience, we as developers also have a good sense of what we would like to see ourselves in a scholarship management system. Thus, we have added our own features; ones that we think would enhance the website as a client, and also ones that can make the platform more cohesive and easy to expand upon as developers. Our goal is to create the best user experience possible. We are always open to feedback and will apply changes as necessary.
+      </p>
+
+      <!--FAQ Section-->
+      <h2>
+        Frequently Asked Questions
+      </h2>
+      <p>
+        Q: What scholarships do you display?
+        <br>
+        <br>
+        A: We display all scholarships from all Ontario universities.
+        <br>
+        <br>
+        <br>
+        <br>
+        Q: How can I apply to the scholarships displayed?
+        <br>
+        <br>
+        A: One thing to clear up is that you are unable to apply directly to the scholarships we display on ScholarSearch. Each university has their individual application platforms. By clicking on the title of scholarships, you will be redirected to a page that contains more information about the scholarship. If you click the "More Information" button, you will be redirected to the university page, where you can learn and start the formal application process.
+        <br>
+        <br>
+        <br>
+        <br>
+        Q: What are Bookmarks?
+        <br>
+        <br>
+        A: Suppose you find a great scholarship and you want to save it for later. You can bookmark the scholarship and ScholarSearch will save it to your account. You can access all your bookmarks in "My Bookmarks".
+        <br>
+        <br>
+        <br>
+        <br>
+        Q: How does the For You page work?
+        <br>
+        <br>
+        A: Looking aimlessly at hundreds of scholarships can be tedious. We added an option for users to add their desired university and discipline. The For You page will take that information and display scholarships that interest you, based on subject, university, and also recommend relevant scholarships from other univerisites in close proximity.
+        <br>
+        <br>
+        <br>
+        <br>
+        Q: When filtering by discipline, what is the "All" filter supposed to mean?
+        <br>
+        <br>
+        A: Good question. In this case, when your feed has 0 filters at all, the entirety (ALL) of the scholarships in our database will be displayed. However, if you were to check the "All" filter for discipline, only scholarships who fall into "All" disciplines will be shown. Sorry for the confusion, but we didn't think there was a better way to name this filter.
+      </p>
+    </main>
+
+    <!--Light/dark Mode Switch-->
+    <vs-switch
+      v-model="themeSwitch"
+      class="switch"
+      @click="theme()"
+      color="#add8e6"
+    >
+      <template #off>
+        <i class="bx-bxs-moon"></i>
+      </template>
+      <template #on>
+        <i class="bx-bxs-sun"></i>
+      </template>
+    </vs-switch>
+
+    <!--Footer-->
+    <footer>
+
+      <!--Footer Logo-->
+      <img id="Footer-Logo" src="/assets/darkmodelogo.png" alt="ScholarSearch Logo">
+
+      <!--Footer Buttons-->
+      <vs-button id="Home-Footer" onclick="document.location='./'">
+        Home
+      </vs-button>
+      <vs-button id="Login-Register-Footer" @click="checkSession()">
+        Login/Register
+      </vs-button>
+    </footer>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuesax@4.0.1-alpha.25/dist/vuesax.min.js"></script>
+  <script src="aboutus.js"></script>
+</body>
+</html>

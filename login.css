@@ -1,0 +1,334 @@
+/*
+Title: login.css
+Stylesheet for login.html
+*/
+
+:root {
+  --vs-dark: #000000;
+}
+
+@font-face {
+  font-family: kollektifbold;
+  src: url(/assets/Kollektif.ttf);
+}
+
+/* Light Mode */
+
+#app {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+  font-family: kollektifbold;
+}
+
+#Home {
+  border-radius: 100px;
+  background-color: #7275a5;
+  font-family : inherit;
+}
+
+#Home:hover {
+  background-color: #7275a5;
+}
+
+#right-side {
+    background-color: #add8e6;
+    grid-area: 1 / 2 / 2/ 3;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: inset 0 0 5px #dddddd;
+}
+
+#left-side {
+    background-color: #FFFFFF;
+    grid-area: 1 / 1 / 2 / 2;
+    margin-left: 100px;
+}
+
+#Home {
+  background-color: #7275a5;
+  border-radius: 20px;
+  margin-top: 30px;
+  margin-bottom: 49px;
+  right: 60px;
+  height: 40px;
+  width: 160px;
+}
+
+#Login-Title {
+  font-size: 40px;
+  color: #add8e6;
+}
+
+#left-line {
+  height: 5px;
+  width: 240px;
+  background-color: #add8e6;
+  color: #add8e6;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  margin-left: 0;
+  border: none;
+}
+
+#Scholar-Search-Logo {
+  text-align: right;
+}
+
+
+#Logo {
+  width: 222px;
+  height: 112px;
+  margin-right: 40px;
+  top: 20px;
+  position: relative;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.left {
+  color: #add8e6;
+}
+
+.input {
+  width: 260px;
+  font-family : inherit;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #FFFFFF;
+  box-shadow: #000000;
+}
+
+.inputr {
+  width: 260px;
+  font-family : inherit;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #FFFFFF;
+  box-shadow: #000000;
+  border-radius: 20px;
+  margin-left: 100px;
+}
+
+h1 {
+  color: #add8e6;
+  font-size: 36px;
+}
+
+#Login-Button {
+  background-color: #7275a5;
+  width: 160px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 50px;
+  font-family : inherit;
+}
+
+.switch {
+  width: 75px;
+  height: 40px;
+  color: #add8e6;
+  right: 60px;
+  background-color: #7275a5;
+  margin-top: 250px;
+}
+
+.switch:hover{
+  background-color: #7275a5
+}
+
+.bx-bxs-moon {
+  content: url('https://api.iconify.design/bx-bxs-moon.svg?color=White&height=20');
+  vertical-align: -0.125em;
+}
+
+.bx-bxs-sun {
+  content: url('https://api.iconify.design/bx-bxs-sun.svg?height=20');
+  vertical-align: -0.125em;
+}
+
+#Register-Title {
+  color: white;
+  margin-left: 100px;
+}
+
+#right-line {
+  height: 5px;
+  width: 240px;
+  background-color: #ffffff;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  margin-left: 100px;
+  border: none;
+}
+
+.right {
+  color: #ffffff;
+  margin-left: 100px;
+}
+
+.right-side {
+  margin-left: 100px;
+  border-radius: 20px;
+}
+
+#Create-Account {
+  border-radius: 20px;
+  height: 40px;
+  width: 160px;
+  margin-left: 100px;
+  margin-top: 50px;
+  font-family: inherit;
+  margin-bottom: 25px;
+  background-color: #7275a5;
+}
+
+#Create-Account:hover {
+  background-color: #7275a5;
+}
+
+p {
+  font-size: 12;
+  color: #ffffff;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+#message {
+  margin-top: 50px;
+}
+
+.dark-mode-app {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+#email {
+  box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: inset 0 0 5px #dddddd;
+  border-radius: 20px;
+}
+
+#password {
+  box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: inset 0 0 5px #dddddd;
+  border-radius: 20px;
+}
+
+#bx-show-alt {
+  content: url('https://api.iconify.design/bx-bx-show-alt.svg?height=24');
+  vertical-align: -0.125em;
+  color: black;
+}
+
+#bx-hide {
+  content: url('https://api.iconify.design/bx-bx-hide.svg?height=24');
+  vertical-align: -0.125em;
+  color: black;
+}
+
+#error {
+  color: red;
+  font-size: 16px;
+  margin-top: 40px;
+  width: 500px;
+  display: none;
+}
+
+#regError {
+  color: red;
+  font-size: 16px;
+  margin-top: 40px;
+  width: 400px;
+  margin-left: 100px;
+  display: none;
+}
+
+span {
+  color:#7275a5;
+}
+
+
+/* Dark Mode */
+body.dark-theme {
+  background-color:rgba(0, 0, 0, 0.8);
+}
+
+body.dark-theme #Home {
+  background-color: #add8e6;
+  color: black;
+}
+
+body.dark-theme #right-side {
+  background-color: #7275a5;
+}
+
+body.dark-theme #left-side{
+  background-color:rgba(0, 0, 0, 0.0);
+}
+
+body.dark-theme #Login-Title {
+  color: #7275a5;
+}
+
+body.dark-theme #left-line {
+  background-color: #7275a5;
+  color: #7275a5;
+}
+
+body.dark-theme .left {
+  color: #7275a5;
+}
+
+body.dark-theme #message {
+  color: #7275a5;
+}
+
+body.dark-theme .inputr {
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-theme .input {
+  background-color: #7275a5;
+}
+
+body.dark-theme h1 {
+  color: #7275a5;
+}
+
+body.dark-theme #Login-Button {
+  background-color: #add8e6;
+  color: black;
+}
+
+body.dark-theme #Register-Title {
+  color: rgba(0,0,0, 0.7);
+}
+
+body.dark-theme #right-line {
+  background-color: rgba(0,0,0,0.7);
+  color: rgba(0,0,0,0.7);
+}
+
+body.dark-theme #Create-Account {
+  background-color: #add8e6;
+  color: black;
+}
+
+body.dark-theme #uni {
+  background-color: #000000;
+}
+
+body.dark-theme span {
+  color:#add8e6;
+}
+
+body.dark-theme .right {
+  color: black;
+}
+
+body.dark-theme p {
+  color: black;
+}

@@ -116,15 +116,15 @@ new Vue({
       }
 
       //Main Logo Swap
-      if (document.getElementById("Logo").src == "/assets/scholarsearch.png") {
+      if (document.getElementById("Logo").src == "https://friendly-bell-b1c52f.netlify.app/assets/scholarsearch.png") {
 
-        document.getElementById("Logo").src = "/assets/darkmodelogo.png";
+        document.getElementById("Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/darkmodelogo.png";
 
       }
 
       else {
 
-        document.getElementById("Logo").src = "/assets/scholarsearch.png";
+        document.getElementById("Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/scholarsearch.png";
 
       }
 
@@ -175,15 +175,15 @@ new Vue({
       document.body.classList.toggle('dark-theme'); //Class to change all elements
 
       //Main Logo Swap
-      if (document.getElementById("Logo").src == "/assets/scholarsearch.png") {
+      if (document.getElementById("Logo").src == "https://friendly-bell-b1c52f.netlify.app/assets/scholarsearch.png") {
 
-        document.getElementById("Logo").src = "/assets/darkmodelogo.png";
+        document.getElementById("Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/darkmodelogo.png";
 
       }
 
       else {
 
-        document.getElementById("Logo").src = "/assets/scholarsearch.png";
+        document.getElementById("Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/scholarsearch.png";
 
       }
 

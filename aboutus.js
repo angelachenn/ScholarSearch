@@ -62,11 +62,11 @@ new Vue({
 
       if (this.loggedIn=="true") {
 
-        window.location.replace("http://localhost:5500/pages/browse.html");
+        window.location.replace("/browse.html");
 
       } else {
 
-        window.location.replace("http://localhost:5500/pages/login.html");
+        window.location.replace("/login.html");
 
       }
 
@@ -109,15 +109,15 @@ new Vue({
       }
 
       //Switch Footer Logo
-      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
 
       }
 
@@ -129,15 +129,15 @@ new Vue({
       document.body.classList.toggle('dark-theme'); //Class to change all elements
 
       //Switch Footer Logo
-      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
 
       }
 

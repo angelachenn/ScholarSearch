@@ -69,7 +69,7 @@ new Vue({
 
       if (this.loggedIn=="true") {
 
-        window.location.replace("http://localhost:5500/pages/browse.html");
+        window.location.replace("browse.html");
 
       } else {
 
@@ -116,54 +116,54 @@ new Vue({
       }
 
       //Main Logo Swap
-      if (document.getElementById("Logo").src == "http://localhost:5500/assets/scholarsearch.png") {
+      if (document.getElementById("Logo").src == "/assets/scholarsearch.png") {
 
-        document.getElementById("Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+        document.getElementById("Logo").src = "/assets/darkmodelogo.png";
 
       }
 
       else {
 
-        document.getElementById("Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+        document.getElementById("Logo").src = "/assets/scholarsearch.png";
 
       }
 
       //Diploma Image Swap
-      if (document.getElementById("left-image").src == "http://localhost:5500/assets/diploma.png") {
+      if (document.getElementById("left-image").src == "/assets/diploma.png") {
 
-        document.getElementById("left-image").src = "http://localhost:5500/assets/diplomadark.png";
+        document.getElementById("left-image").src = "/assets/diplomadark.png";
 
       }
 
       else {
 
-        document.getElementById("left-image").src = "http://localhost:5500/assets/diploma.png";
+        document.getElementById("left-image").src = "/assets/diploma.png";
 
       }
 
       //Piggybank Image Swap
-      if (document.getElementById("piggy").src == "http://localhost:5500/assets/piggy.png") {
+      if (document.getElementById("piggy").src == "/assets/piggy.png") {
 
-        document.getElementById("piggy").src = "http://localhost:5500/assets/piggydark.png";
+        document.getElementById("piggy").src = "/assets/piggydark.png";
 
       }
 
       else {
 
-        document.getElementById("piggy").src = "http://localhost:5500/assets/piggy.png";
+        document.getElementById("piggy").src = "/assets/piggy.png";
 
       }
 
       //Footer Logo Swap
-      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
 
       }
 
@@ -175,54 +175,54 @@ new Vue({
       document.body.classList.toggle('dark-theme'); //Class to change all elements
 
       //Main Logo Swap
-      if (document.getElementById("Logo").src == "http://localhost:5500/assets/scholarsearch.png") {
+      if (document.getElementById("Logo").src == "/assets/scholarsearch.png") {
 
-        document.getElementById("Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+        document.getElementById("Logo").src = "/assets/darkmodelogo.png";
 
       }
 
       else {
 
-        document.getElementById("Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+        document.getElementById("Logo").src = "/assets/scholarsearch.png";
 
       }
 
       //Diploma Image Swap
-      if (document.getElementById("left-image").src == "http://localhost:5500/assets/diploma.png") {
+      if (document.getElementById("left-image").src == "/assets/diploma.png") {
 
-        document.getElementById("left-image").src = "http://localhost:5500/assets/diplomadark.png";
+        document.getElementById("left-image").src = "/assets/diplomadark.png";
 
       }
 
       else {
 
-        document.getElementById("left-image").src = "http://localhost:5500/assets/diploma.png";
+        document.getElementById("left-image").src = "/assets/diploma.png";
 
       }
 
       //Piggybank Image Swap
-      if (document.getElementById("piggy").src == "http://localhost:5500/assets/piggy.png") {
+      if (document.getElementById("piggy").src == "/assets/piggy.png") {
 
-        document.getElementById("piggy").src = "http://localhost:5500/assets/piggydark.png";
+        document.getElementById("piggy").src = "/assets/piggydark.png";
 
       }
 
       else {
 
-        document.getElementById("piggy").src = "http://localhost:5500/assets/piggy.png";
+        document.getElementById("piggy").src = "/assets/piggy.png";
 
       }
 
       //Footer Logo Swap
-      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
 
       }
 

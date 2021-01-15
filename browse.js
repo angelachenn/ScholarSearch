@@ -271,7 +271,7 @@ new Vue({
     logout() {
 
       localStorage.setItem("status", false);
-      window.location.replace("http://localhost:5500/pages/index.html");
+      window.location.replace("index.html");
 
     },
     //Switches Between Light Mode and Dark Mode
@@ -293,15 +293,15 @@ new Vue({
       }
 
       //Swap Footer Logo
-      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
 
       }
 
@@ -343,15 +343,15 @@ new Vue({
       document.body.classList.toggle('dark-theme'); //Class to change all elements
 
       //Swap Footer Logo
-      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
 
       }
 
@@ -812,7 +812,7 @@ new Vue({
 
       const scholarship = this.scholarships.find(s => s.id === scholarshipid);
       localStorage.setItem("scholarship", scholarship.id);
-      window.location.href = ("http://localhost:5500/pages/scholarship.html");
+      window.location.href = ("scholarship.html");
 
     }
 

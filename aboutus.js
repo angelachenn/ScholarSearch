@@ -109,15 +109,15 @@ new Vue({
       }
 
       //Switch Footer Logo
-      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "https://friendly-bell-b1c52f.netlify.app/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/darkmodelogo.png";
 
       }
 
@@ -129,15 +129,15 @@ new Vue({
       document.body.classList.toggle('dark-theme'); //Class to change all elements
 
       //Switch Footer Logo
-      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "https://friendly-bell-b1c52f.netlify.app/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "https://friendly-bell-b1c52f.netlify.app//assets/darkmodelogo.png";
 
       }
 

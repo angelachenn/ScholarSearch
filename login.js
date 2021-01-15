@@ -213,15 +213,15 @@ new Vue({
       document.body.classList.toggle('dark-theme'); //Class to change all elements
 
       //Logo Swap
-      if (document.getElementById("Footer-Logo").src == "http://localhost:5500/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
 
       }
 
@@ -246,15 +246,15 @@ new Vue({
       }
 
       //Logo Swap
-      if (document.getElementById("Logo").src == "http://localhost:5500/assets/scholarsearch.png") {
+      if (document.getElementById("Logo").src == "/assets/scholarsearch.png") {
 
-        document.getElementById("Logo").src = "http://localhost:5500/assets/darkmodelogo.png";
+        document.getElementById("Logo").src = "/assets/darkmodelogo.png";
 
       }
 
       else {
 
-        document.getElementById("Logo").src = "http://localhost:5500/assets/scholarsearch.png";
+        document.getElementById("Logo").src = "/assets/scholarsearch.png";
 
       }
 
@@ -288,7 +288,7 @@ new Vue({
         localStorage.setItem("status", true);
 
         //switch window
-        window.location.replace("http://localhost:5500/pages/browse.html");
+        window.location.replace("/browse.html");
 
       } else if (this.validEmail2 && this.validPassword && this.value3 !="" && this.value6 !="") {
         //user does not enter discipline field^
@@ -315,7 +315,7 @@ new Vue({
         localStorage.setItem("status", true);
         
         //switch window
-        window.location.replace("http://localhost:5500/pages/browse.html");
+        window.location.replace("/browse.html");
 
       }  else if (this.validEmail2 && this.validPassword && this.value3 !="" && this.value7 !="") {
         //user doesn't enter university^
@@ -342,7 +342,7 @@ new Vue({
         localStorage.setItem("status", true);
         
         //switch window
-        window.location.replace("http://localhost:5500/pages/browse.html");
+        window.location.replace("/browse.html");
 
       } else if (this.validEmail2 && this.validPassword && this.value3 != ""){
         //user does not enter all fields^
@@ -368,7 +368,7 @@ new Vue({
         localStorage.setItem("status", true);
         
         //switch window
-        window.location.replace("http://localhost:5500/pages/browse.html");
+        window.location.replace("/browse.html");
 
       } else {
 
@@ -395,7 +395,7 @@ new Vue({
             localStorage.setItem("status", true);
             
             //switch window
-            window.location.replace("http://localhost:5500/pages/browse.html");
+            window.location.replace("/browse.html");
 
           } else {
 

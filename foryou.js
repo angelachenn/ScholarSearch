@@ -353,7 +353,7 @@ new Vue({
       //Swap Footer Logo
       if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "/assets/piggy.png";
 
       }
 

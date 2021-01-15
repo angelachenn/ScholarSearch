@@ -73,7 +73,7 @@ new Vue({
 
       } else {
 
-        window.location.replace("http://localhost:5500/pages/login.html");
+        window.location.replace("login.html");
 
       }
 

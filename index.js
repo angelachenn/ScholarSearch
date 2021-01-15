@@ -129,41 +129,41 @@ new Vue({
       }
 
       //Diploma Image Swap
-      if (document.getElementById("left-image").src == "/assets/diploma.png") {
+      if (document.getElementById("left-image").src == "https://friendly-bell-b1c52f.netlify.app/assets/diploma.png") {
 
-        document.getElementById("left-image").src = "/assets/diplomadark.png";
+        document.getElementById("left-image").src = "https://friendly-bell-b1c52f.netlify.app/assets/diplomadark.png";
 
       }
 
       else {
 
-        document.getElementById("left-image").src = "/assets/diploma.png";
+        document.getElementById("left-image").src = "https://friendly-bell-b1c52f.netlify.app/assets/diploma.png";
 
       }
 
       //Piggybank Image Swap
-      if (document.getElementById("piggy").src == "/assets/piggy.png") {
+      if (document.getElementById("piggy").src == "https://friendly-bell-b1c52f.netlify.app/assets/piggy.png") {
 
-        document.getElementById("piggy").src = "/assets/piggydark.png";
+        document.getElementById("piggy").src = "https://friendly-bell-b1c52f.netlify.app/assets/piggydark.png";
 
       }
 
       else {
 
-        document.getElementById("piggy").src = "/assets/piggy.png";
+        document.getElementById("piggy").src = "https://friendly-bell-b1c52f.netlify.app/assets/piggy.png";
 
       }
 
       //Footer Logo Swap
-      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "https://friendly-bell-b1c52f.netlify.app/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/darkmodelogo.png";
 
       }
 
@@ -188,41 +188,41 @@ new Vue({
       }
 
       //Diploma Image Swap
-      if (document.getElementById("left-image").src == "/assets/diploma.png") {
+      if (document.getElementById("left-image").src == "https://friendly-bell-b1c52f.netlify.app/assets/diploma.png") {
 
-        document.getElementById("left-image").src = "/assets/diplomadark.png";
+        document.getElementById("left-image").src = "https://friendly-bell-b1c52f.netlify.app/assets/diplomadark.png";
 
       }
 
       else {
 
-        document.getElementById("left-image").src = "/assets/diploma.png";
+        document.getElementById("left-image").src = "https://friendly-bell-b1c52f.netlify.app/assets/diploma.png";
 
       }
 
       //Piggybank Image Swap
-      if (document.getElementById("piggy").src == "/assets/piggy.png") {
+      if (document.getElementById("piggy").src == "https://friendly-bell-b1c52f.netlify.app/assets/piggy.png") {
 
-        document.getElementById("piggy").src = "/assets/piggydark.png";
+        document.getElementById("piggy").src = "https://friendly-bell-b1c52f.netlify.app/assets/piggydark.png";
 
       }
 
       else {
 
-        document.getElementById("piggy").src = "/assets/piggy.png";
+        document.getElementById("piggy").src = "https://friendly-bell-b1c52f.netlify.app/assets/piggy.png";
 
       }
 
       //Footer Logo Swap
-      if (document.getElementById("Footer-Logo").src == "/assets/darkmodelogo.png") {
+      if (document.getElementById("Footer-Logo").src == "https://friendly-bell-b1c52f.netlify.app/assets/darkmodelogo.png") {
 
-        document.getElementById("Footer-Logo").src = "/assets/scholarsearch.png";
+        document.getElementById("Footer-Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/scholarsearch.png";
 
       }
 
       else {
 
-        document.getElementById("Footer-Logo").src = "/assets/darkmodelogo.png";
+        document.getElementById("Footer-Logo").src = "https://friendly-bell-b1c52f.netlify.app/assets/darkmodelogo.png";
 
       }
 
